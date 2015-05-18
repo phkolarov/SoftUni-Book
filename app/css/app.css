@@ -13,3 +13,19 @@
 
 	min-width: 100%;
 }
+
+.wrapp{
+
+
+	background-color: #ECF0F1;
+	margin: 100px auto 10px auto;
+	padding: 10px;
+	border: 1px solid black;
+	width: 1000px;
+	height: 550px;
+}
+
+.logo{
+
+	background-color: #18bc9c;
+}
