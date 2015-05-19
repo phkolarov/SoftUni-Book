@@ -1,3 +1,9 @@
-/**
- * Created by mst on 18.5.2015 ã..
- */
+app.directive('newsFeed', function(){
+
+    return{
+        restrict: 'A',
+        templateUrl: 'partials/news-feed.html',
+        controller: 'NewsFeedCtrl',
+        replace: true
+    }
+});

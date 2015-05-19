@@ -1,3 +1,10 @@
-/**
- * Created by mst on 18.5.2015 ã..
- */
+app.directive('friendsBox',function(){
+
+    return{
+        restrict: 'A',
+        templateUrl: 'partials/firends-box.html',
+        controller: 'friendsBoxCtrl',
+        replace: true
+
+    }
+} );
