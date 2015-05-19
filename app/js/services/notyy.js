@@ -1,11 +1,10 @@
-app.factory('notifyService',
-    function (notifyService) {
+app.factory('notifyService', [ function (notifyService) {
         return {
             showInfo: function(msg) {
                 noty({
                         text: msg,
-                        type: 'info',
-                        layout: 'topCenter',
+                        type: 'success',
+                        layout: 'center',
                         timeout: 1000}
                 );
             },
@@ -33,10 +32,10 @@ app.factory('notifyService',
                 noty({
                     text: msg,
                     type: 'error',
-                    layout: 'topCenter',
+                    layout: 'center',
                     timeout: 5000}
                 );
             }
         }
-    }
+    }]
 );

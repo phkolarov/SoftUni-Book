@@ -6,7 +6,7 @@ app.factory('users', ['$resource', 'baseServiceUrl', function ($resource, baseSe
     function login(username, passwrd) {
 
         var resource = $resource(
-            baseServiceUrl + 'login/'
+            url + 'login/'
         );
 
         var userdata = {
@@ -24,8 +24,8 @@ app.factory('users', ['$resource', 'baseServiceUrl', function ($resource, baseSe
     }
 
 
-
     return {
         login: login
     }
 }]);
+
