@@ -4,14 +4,14 @@
         <div class="form-group">
             <label for="reg-username" class="col-lg-2 control-label">Username</label>
             <div class="col-lg-10">
-                <input type="text" class="form-control" id="reg-username" placeholder="Username">
+                <input type="text" class="form-control" id="reg-username" placeholder="Username" ng-model="registerUser.username">
             </div>
         </div>
 
         <div class="form-group">
             <label for="reg-inputPassword" class="col-lg-2 control-label">Password</label>
             <div class="col-lg-10">
-                <input type="password" class="form-control" id="reg-inputPassword" placeholder="Password">
+                <input type="password" class="form-control" id="reg-inputPassword" placeholder="Password" ng-model="registerUser.password">
 
             </div>
         </div>
@@ -19,7 +19,7 @@
         <div class="form-group">
             <label for="reg-confirmPassword" class="col-lg-2 control-label">Confirm Password</label>
             <div class="col-lg-10">
-                <input type="password" class="form-control" id="reg-confirmPassword" placeholder="Password">
+                <input type="password" class="form-control" id="reg-confirmPassword" placeholder="Password" ng-model="registerUser.confirmPassword">
 
             </div>
         </div>
@@ -27,7 +27,7 @@
         <div class="form-group">
             <label for="name" class="col-lg-2 control-label">Name</label>
             <div class="col-lg-10">
-                <input type="text" class="form-control" id="name" placeholder="Name">
+                <input type="text" class="form-control" id="name" placeholder="Name" ng-model="registerUser.name">
 
             </div>
         </div>
@@ -35,7 +35,7 @@
         <div class="form-group">
             <label for="email" class="col-lg-2 control-label">Email</label>
             <div class="col-lg-10">
-                <input type="email" class="form-control" id="email" placeholder="Email">
+                <input type="email" class="form-control" id="email" placeholder="Email" ng-model="registerUser.email" >
 
             </div>
         </div>
@@ -45,25 +45,25 @@
             <div class="col-lg-10">
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="male" value="male" checked="">
+                        <input type="radio" name="optionsRadios" id="male" value="male" checked="" ng-model="registerUser.gender">
                         Male
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="female" value="female">
+                        <input type="radio" name="optionsRadios" id="female" value="female" ng-model="registerUser.gender">
                         Female
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="other" value="female">
+                        <input type="radio" name="optionsRadios" id="other" value="female" ng-model="registerUser.gender">
                         Other
                     </label>
                 </div>
             </div>
         </div>
 
-        <button class="btn-sm"> Register</button>
+        <button class="btn-sm" ng-click="register(registerUser)"> Register</button>
     </fieldset>
 </form>

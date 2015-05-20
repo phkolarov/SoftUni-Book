@@ -1,31 +1,43 @@
-app.factory('users', ['$resource', 'baseServiceUrl', function ($resource, baseServiceUrl) {
+app.factory('users', ['$resource', 'baseServiceUrl', '$http', function ($resource, baseServiceUrl, $http) {
 
+    $http.defaults.headers.common['Authorization'] = 'Bearer '+ sessionStorage.userSession;
 
     var url = baseServiceUrl + 'users/';
 
-    function login(username, passwrd) {
+
+    // LOGIN SERVICE
+    function login(userDataObj) {
 
         var resource = $resource(
             url + 'login/'
         );
 
-        var userdata = {
-            username: username,
-            password: passwrd
-        };
-
-        return resource.save(userdata)
+        return resource.save(userDataObj)
     };
 
-    function register(username, password, confirmpassword, name, email, gender){
 
+    // REGISTER SERVICE
+    function register(userDataObj){
 
-
+        var resource = $resource(
+            url + 'register/'
+        );
+        return resource.save(userDataObj)
     }
 
+    //LOGOUT SERVICE
+
+    function logout(){
+        var resource = $resource(
+            url + 'logout/'
+        );
+        return resource.save()
+    }
 
     return {
-        login: login
+        login: login,
+        register: register,
+        logout: logout
     }
 }]);
 

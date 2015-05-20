@@ -36,7 +36,7 @@ module.exports = function(grunt) {
         uglify: {
             //options : {
             //    preserveComments: function(a) {
-            //        return !!(a.start.file == 'js/noty/jquery.notyy.js' && a.start.line == 11);
+            //        return !!(a.start.file == 'js/noty/jquery.noty.js' && a.start.line == 11);
             //    }
             //},
             minifyJS: {
