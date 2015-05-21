@@ -1,5 +1,5 @@
 'use strict';
-app.controller('loginRegisterForm', function(){
+app.controller('homePageCtrl', function(){
 
 
 });

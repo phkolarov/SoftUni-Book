@@ -1,4 +1,4 @@
-app.controller('RegisterForm', ['$scope', 'users', 'notifyService',function($scope, users, notifyService){
+app.controller('RegisterForm', ['$scope','$location', 'users', 'notifyService',function($scope, $location, users, notifyService){
 
 
     $scope.register = function (user) {
@@ -11,7 +11,7 @@ app.controller('RegisterForm', ['$scope', 'users', 'notifyService',function($sco
 
                 sessionStorage.userSession = data.access_token;
                 sessionStorage.username = data.userName;
-
+                $location.path('/home');
                 notifyService.showInfo('Register Success');
             }, function(error){
 

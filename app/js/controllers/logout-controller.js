@@ -1,4 +1,4 @@
-app.controller('logout', ['$scope', 'users', 'notifyService',function($scope,users, notifyService) {
+app.controller('logout', ['$scope','$location', 'users', 'notifyService',function($scope,$location, users, notifyService) {
 
 
 
@@ -9,6 +9,8 @@ app.controller('logout', ['$scope', 'users', 'notifyService',function($scope,use
             .then(function(data){
 
                 sessionStorage.clear();
+
+                $location.path('/');
                 notifyService.showInfo('Logout Success');
             }, function(error){
 
@@ -17,5 +19,6 @@ app.controller('logout', ['$scope', 'users', 'notifyService',function($scope,use
             });
     }
 
+    $scope.str = 'String'
 
 }]);

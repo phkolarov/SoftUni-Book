@@ -1,6 +1,8 @@
 app.factory('users', ['$resource', 'baseServiceUrl', '$http', function ($resource, baseServiceUrl, $http) {
 
-    $http.defaults.headers.common['Authorization'] = 'Bearer '+ sessionStorage.userSession;
+    if(localStorage.userSession){
+        $http.defaults.headers.common['Authorization'] = 'Bearer '+ sessionStorage.userSession;
+    }
 
     var url = baseServiceUrl + 'users/';
 
