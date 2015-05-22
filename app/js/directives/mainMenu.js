@@ -2,7 +2,7 @@ app.directive('mainMenu', function(){
 
     return{
         restrict: 'A',
-        templateUrl: 'partials/main-menu.html',
+        templateUrl: 'partials/directive/main-menu.html',
         controller: 'MainMenuCtrl',
         replace: true
     }

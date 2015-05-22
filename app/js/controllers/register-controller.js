@@ -1,4 +1,4 @@
-app.controller('RegisterForm', ['$scope','$location', 'users', 'notifyService',function($scope, $location, users, notifyService){
+app.controller('RegisterForm', ['$scope','$location', 'users', 'notifyService','authentication','$route',function($scope, $location, users, notifyService,authentication,$route){
 
 
     $scope.register = function (user) {
@@ -9,9 +9,10 @@ app.controller('RegisterForm', ['$scope','$location', 'users', 'notifyService',f
             .$promise
             .then(function(data){
 
-                sessionStorage.userSession = data.access_token;
-                sessionStorage.username = data.userName;
-                $location.path('/home');
+                console.log(data);
+                authentication.saveUser(data);
+                authentication.setHeaders();
+                $route.reload();
                 notifyService.showInfo('Register Success');
             }, function(error){
 
@@ -21,7 +22,5 @@ app.controller('RegisterForm', ['$scope','$location', 'users', 'notifyService',f
                 }
             });
     }
-
-
 
 }]);

@@ -2,7 +2,7 @@ app.directive('newsFeed', function(){
 
     return{
         restrict: 'A',
-        templateUrl: 'partials/news-feed.html',
+        templateUrl: 'partials/directive/news-feed.html',
         controller: 'NewsFeedCtrl'
     }
 });

@@ -1,33 +1,25 @@
-app.controller('LoginForm',
-    ['$scope',
-        'authentication',
-        '$location',
-        'users',
-        'notifyService',
-
-        function ($scope,authentication, $location, users,notifyService) {
+app.controller('LoginForm', ['$scope', 'authentication', '$location', 'users', 'notifyService', '$route', function ($scope, authentication, $location, users, notifyService, $route) {
 
 
-            $scope.login = function (user) {
 
-                var userObj = user;
+    $scope.login = function (user) {
 
-                users.login(userObj)
-                    .$promise
-                    .then(function (data) {
+        var userObj = user;
 
-                        //sessionStorage.userSession = data.access_token;
-                        //sessionStorage.username = data.userName;
-                        authentication.saveUser(data);
+        users.login(userObj)
+            .$promise
+            .then(function (data) {
 
-                        $location.path('/home');
-                        notifyService.showInfo('Login Success');
-                    }, function (error) {
-                        console.log('EROR')
-                        console.log(error);
-                        notifyService.showError(error.data.error_description);
-                    });
-            };
+                authentication.saveUser(data);
+                authentication.setHeaders();
+                $route.reload();
+                notifyService.showInfo('Login Success');
+            }, function (error) {
 
-        }]);
+                console.log(error);
+                notifyService.showError(error.data.error_description);
+            });
+    };
+
+}]);
 

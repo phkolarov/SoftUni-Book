@@ -1,7 +1,7 @@
 app.factory('users', ['$resource', 'baseServiceUrl', '$http', function ($resource, baseServiceUrl, $http) {
 
     if(localStorage.userSession){
-        $http.defaults.headers.common['Authorization'] = 'Bearer '+ sessionStorage.userSession;
+        $http.defaults.headers.common['Authorization'] = 'Bearer '+ localStorage.userSession;
     }
 
     var url = baseServiceUrl + 'users/';
@@ -29,11 +29,11 @@ app.factory('users', ['$resource', 'baseServiceUrl', '$http', function ($resourc
 
     //LOGOUT SERVICE
 
-    function logout(){
+    function logout(data){
         var resource = $resource(
             url + 'logout/'
         );
-        return resource.save()
+        return resource.save(data)
     }
 
     return {

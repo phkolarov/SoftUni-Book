@@ -5,12 +5,13 @@ app.constant('baseServiceUrl', 'http://softuni-social-network.azurewebsites.net/
 app.config(['$routeProvider', 'localStorageServiceProvider',function ($routeProvider,localStorageServiceProvider) {
 
     $routeProvider.when('/',{
-        templateUrl: 'partials/login-register-form.html'
-    });
-
-    $routeProvider.when('/home',{
-        templateUrl: 'partials/homepage.html',
-        controller: 'HomePageCtrl'
+        templateUrl: function(){
+            if(!localStorage.userSession){
+                return 'partials/login-register-form.html'
+            }else{
+                return 'partials/homepage.html'
+            }
+        }
     });
 
     $routeProvider.when('/friends',{
@@ -32,9 +33,10 @@ app.config(['$routeProvider', 'localStorageServiceProvider',function ($routeProv
         templateUrl: 'partials/change-password.html',
         controller: 'HomePageCtrl'
     });
+    $routeProvider.otherwise({
+        redirectTo: '/'
+    });
 
-
-    localStorageServiceProvider.setStorageType('sessionStorage')
 
 }]);
 

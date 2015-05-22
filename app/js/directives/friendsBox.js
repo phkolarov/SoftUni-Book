@@ -2,7 +2,7 @@ app.directive('friendsBox',function(){
 
     return{
         restrict: 'A',
-        templateUrl: 'partials/firends-box.html',
+        templateUrl: 'partials/directive/firends-box.html',
         controller: 'friendsBoxCtrl',
         replace: true
 
