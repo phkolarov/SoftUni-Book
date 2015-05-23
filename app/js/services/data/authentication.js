@@ -6,8 +6,6 @@ app.factory('authentication', ['$http', function ($http) {
 
         localStorage.userSession = data.access_token;
         localStorage.username = data.userName;
-
-        console.log(data);
     }
 
     function getUserData(){

@@ -1,64 +1,42 @@
 <div class="set" class="row">
 
     <div class="col-sm-6">
-        <div id="picture">
-            <img class="profileImg" ng-src="{{picture()}}">
-
-        </div>
+        <div id="picture"></div>
 
         <p>Allowed Formad: .jpg</p>
         <p>Max size: 128kb</p>
 
-        <input type="file" class="btn btn-primary" ng-model="editProfile.profileImageData" base-sixty-four-input id="inputProfileImageData" placeholder="img" ng-change="changeProfileImageData()">
-
-
+        <button class="btn btn-info">Upload</button>
     </div>
 
 
-    <div id="cover" class="col-sm-6">
-
-        <img class="coverImg"  ng-src="{{cover()}}">
-
-    </div>
+    <div id="cover" class="col-sm-6"></div>
     <div class="col-sm-6">
         <p>Allowed Formad: .jpg</p>
         <p>Max size: 1024kb</p>
     </div>
     <div class="col-sm-6">
 
-        <br><span>Name :</span> <input type="text" ng-model="editProfile.username" placeholder="{{name}}"></br></br>
-        <span>Email:</span><input type="text" ng-model="editProfile.email" placeholder="{{email}}"></br>
+        <br><span>Name :</span> <input type="text" placeholder="{{name}}"></br></br>
+        <span>Email:</span><input type="text" placeholder="{{email}}"></br>
 
 
         <br>
 
-        <div class="form-group">
-            <label class="col-lg-2 control-label">Gender</label>
-            <div class="col-lg-10">
-                <div class="radio">
-                    <label>
-                        <input name="gender" id="male" value="male" type="radio" ng-model="editProfile.gender">
-                        Male
-                    </label>
-                    <label>
-                        <input name="gender" id="female" value="female" type="radio" ng-model="editProfile.gender">
-                        Female
-                    </label>
-                    <label>
-                        <input name="gender" id="other" value="other" checked="" type="radio" ng-model="editProfile.gender">
-                        Other
-                    </label>
-                </div>
-            </div>
-        </div>
+        <form>
+            <input type="radio" name="gender"> Male </br>
+            <input type="radio" name="gender"> Female </br>
+            <input type="radio" name="gender"> Other </br>
+        </form>
 
-        <input class="btn btn-info" ng-file-select="onFileSelect($files)" type="file"/>Upload <br>
+        <input type="file" id="image"
+               onchange="angular.element(this).scope().fileSelected(this)" />Upload
     </div>
 
 </div>
 
 </div>
 <div  class="col-md-2 col-md-offset-5">
-    <button class="btn btn-info"  id="butn" ng-click="saveProfileData()">Save Changes</button>
+    <button class="btn btn-info" >Save Changes</button>
 
 </div>

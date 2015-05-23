@@ -39,15 +39,10 @@
 
 #picture{
 
-	max-width: 252px;
+	width: 300px;
+	height: 300px;
 	border: 1px solid black;
 }
-.profileImg{
-
-	max-width: 250px;
-
-}
-
 .set{
 	padding: 20px;
 }
@@ -56,12 +51,8 @@ span{
 	margin-right: 10px;
 }
 
-.coverImg{
+#cover{
 	width: 300px;
+	height: 100px;
 	border: 1px solid black;
 }
-#butn{
-	margin-top: 50px;
-}
-
-
