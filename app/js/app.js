@@ -1,4 +1,4 @@
-var app = angular.module('sfbook',[ 'ngResource','ngRoute','LocalStorageModule']);
+var app = angular.module('sfbook',[ 'ngResource','ngRoute','LocalStorageModule', 'naif.base64']);
 
 app.constant('baseServiceUrl', 'http://softuni-social-network.azurewebsites.net/api/');
 
