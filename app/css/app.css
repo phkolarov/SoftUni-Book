@@ -29,3 +29,30 @@
 
 	background-color: #18bc9c;
 }
+.fb-container{
+
+	text-align: center;
+	width: 350px;
+	height: 350px;
+	border: 1px solid black;
+}
+
+#picture{
+
+	width: 300px;
+	height: 300px;
+	border: 1px solid black;
+}
+.set{
+	padding: 20px;
+}
+
+span{
+	margin-right: 10px;
+}
+
+#cover{
+	width: 300px;
+	height: 100px;
+	border: 1px solid black;
+}

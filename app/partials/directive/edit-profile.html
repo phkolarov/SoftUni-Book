@@ -1,0 +1,42 @@
+<div class="set" class="row">
+
+    <div class="col-sm-6">
+        <div id="picture"></div>
+
+        <p>Allowed Formad: .jpg</p>
+        <p>Max size: 128kb</p>
+
+        <button class="btn btn-info">Upload</button>
+    </div>
+
+
+    <div id="cover" class="col-sm-6"></div>
+    <div class="col-sm-6">
+        <p>Allowed Formad: .jpg</p>
+        <p>Max size: 1024kb</p>
+    </div>
+    <div class="col-sm-6">
+
+        <br><span>Name :</span> <input type="text" placeholder="{{name}}"></br></br>
+        <span>Email:</span><input type="text" placeholder="{{email}}"></br>
+
+
+        <br>
+
+        <form>
+            <input type="radio" name="gender"> Male </br>
+            <input type="radio" name="gender"> Female </br>
+            <input type="radio" name="gender"> Other </br>
+        </form>
+
+        <input type="file" id="image"
+               onchange="angular.element(this).scope().fileSelected(this)" />Upload
+    </div>
+
+</div>
+
+</div>
+<div  class="col-md-2 col-md-offset-5">
+    <button class="btn btn-info" >Save Changes</button>
+
+</div>

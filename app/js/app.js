@@ -25,9 +25,9 @@ app.config(['$routeProvider', 'localStorageServiceProvider',function ($routeProv
     });
 
     $routeProvider.when('/edit-profile',{
-        templateUrl: 'partials/edit-profile.html',
+        templateUrl: 'partials/edit.html',
         controller: 'HomePageCtrl'
-    });
+});
 
     $routeProvider.when('/change-password',{
         templateUrl: 'partials/change-password.html',

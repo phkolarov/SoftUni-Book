@@ -1,8 +1,6 @@
-app.factory('users', ['$resource', 'baseServiceUrl', '$http', function ($resource, baseServiceUrl, $http) {
+app.factory('users', ['$resource', 'baseServiceUrl', '$http','authentication',  function ($resource, baseServiceUrl, $http, authentication) {
 
-    if(localStorage.userSession){
-        $http.defaults.headers.common['Authorization'] = 'Bearer '+ localStorage.userSession;
-    }
+    authentication.setHeaders();
 
     var url = baseServiceUrl + 'users/';
 
@@ -36,10 +34,17 @@ app.factory('users', ['$resource', 'baseServiceUrl', '$http', function ($resourc
         return resource.save(data)
     }
 
+    //HOMEPAGE FRIENDS BOX
+    function friendsBox(){
+
+
+    }
+
     return {
         login: login,
         register: register,
-        logout: logout
+        logout: logout,
+        friendsBox: friendsBox
     }
 }]);
 

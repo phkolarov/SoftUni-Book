@@ -5,6 +5,7 @@ app.factory('authentication', ['$http', function ($http) {
     function saveUserData(data){
 
         localStorage.userSession = data.access_token;
+        localStorage.username = data.userName;
     }
 
     function getUserData(){
@@ -20,16 +21,13 @@ app.factory('authentication', ['$http', function ($http) {
         if(localStorage.userSession){
             $http.defaults.headers.common['Authorization'] = 'Bearer '+ localStorage.userSession;
         }else{
-            console.log('Local Storage is Empty')
+            console.log('Headers is Empty')
         }
     }
 
     function clearHeaders(){
 
             $http.defaults.headers.common['Authorization'] = '';
-
-
-
     }
     return{
 

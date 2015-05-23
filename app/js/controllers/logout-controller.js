@@ -1,4 +1,4 @@
-app.controller('logout', ['$scope','$location', 'users', 'notifyService',function($scope,$location, users, notifyService) {
+app.controller('logout', ['$scope','$location', 'users', 'notifyService','authentication',function($scope,$location, users, notifyService,authentication) {
 
 
 
@@ -7,18 +7,14 @@ app.controller('logout', ['$scope','$location', 'users', 'notifyService',functio
         users.logout()
             .$promise
             .then(function(data){
-
-                sessionStorage.clear();
-
+                localStorage.clear();
                 $location.path('/');
                 notifyService.showInfo('Logout Success');
             }, function(error){
 
-                console.log(error);
-                notifyService.showError('Error');
+                notifyService.showError('Error on logout');
             });
     }
 
-    $scope.str = 'String'
 
 }]);

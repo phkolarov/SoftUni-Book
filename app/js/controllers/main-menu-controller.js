@@ -1,4 +1,4 @@
-app.controller('MainMenuCtrl', ['$scope','users','authentication','$route', function ($scope,users, authentication,$route) {
+app.controller('MainMenuCtrl', ['$scope','users','authentication','notifyService','$route', function ($scope,users, authentication,notifyService, $route) {
 
     $scope.logout = function(){
 
@@ -7,10 +7,14 @@ app.controller('MainMenuCtrl', ['$scope','users','authentication','$route', func
             .then(function (data) {
                 authentication.logout();
                 authentication.clearHeaders();
+                notifyService.showInfo('Logout success')
                 $route.reload();
             },function(data){
 
-                console.log(data);
+                authentication.logout();
+                authentication.clearHeaders();
+                notifyService.showInfo('Logout success')
+                $route.reload();
             });
     }
 
