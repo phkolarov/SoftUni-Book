@@ -1,5 +1,6 @@
 app.factory('profile', ['$resource', 'baseServiceUrl', '$http','authentication',  function ($resource, baseServiceUrl, $http, authentication) {
 
+
     authentication.setHeaders();
 
 
@@ -15,11 +16,14 @@ app.factory('profile', ['$resource', 'baseServiceUrl', '$http','authentication',
     };
 
 
+    var resource = $resource(url, null,
+        {
+            'update': { method:'PUT' }
+        });
+
     function setProfileInfo(data){
 
-        var resource = $resource(url);
-
-        return resource.set(data);
+        return resource.update(data);
     }
 
     return{
@@ -27,5 +31,6 @@ app.factory('profile', ['$resource', 'baseServiceUrl', '$http','authentication',
         getProfileInfo: getProfileInfo,
         setProfileInfo: setProfileInfo
     }
+
 
 }]);
