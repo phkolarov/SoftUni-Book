@@ -26,7 +26,7 @@
                 <div class="col-sm-4">
                     <ul class="nav navbar-nav">
                         <li><a href="#/">News Feed</a></li>
-                        <li><a href="#/friends">Invates</a></li>
+                        <li><a href="" ng-style="color" ng-click="invates()">Invates {{count()}}</a></li>
                         <li><a href="#/edit-profile">Settings</a></li>
                         <li><a href="#/" ng-click="logout()">Logout</a></li>
 
@@ -34,10 +34,14 @@
                 </div>
 
                 <div>
-                    <h4>Username</h4>
+                    <a href="#/profile"><span id="topUsername">Username</span></a>
                 </div>
             </div>
         </div>
         <div class="col-sm-1"></div>
+
+        <div friends-requests ng-hide="show" class="invates"></div>
+
     </div>
+
 </nav>

@@ -2,6 +2,9 @@ var app = angular.module('sfbook',[ 'ngResource','ngRoute','LocalStorageModule',
 
 app.constant('baseServiceUrl', 'http://softuni-social-network.azurewebsites.net/api/');
 
+app.value('invate', 'false');
+
+
 app.config(['$routeProvider', 'localStorageServiceProvider',function ($routeProvider,localStorageServiceProvider) {
 
     $routeProvider.when('/',{
@@ -16,6 +19,11 @@ app.config(['$routeProvider', 'localStorageServiceProvider',function ($routeProv
 
     $routeProvider.when('/friends',{
         templateUrl: 'partials/friends-page.html',
+        controller: 'HomePageCtrl'
+    });
+
+    $routeProvider.when('/profile',{
+        templateUrl: 'partials/profile.html',
         controller: 'HomePageCtrl'
     });
 

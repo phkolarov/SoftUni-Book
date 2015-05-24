@@ -31,9 +31,11 @@
 }
 .fb-container{
 
+	margin: 0px;
+
 	text-align: center;
-	width: 350px;
-	height: 350px;
+	width: 450px;
+	height: 410px;
 	border: 1px solid black;
 }
 
@@ -62,4 +64,56 @@ span{
 	margin-top: 10px;
 	margin-left: 350px;
 	width: 60px;
+}
+#topUsername{
+
+	color: black;
+}
+#topUsername:hover{
+
+	color: white;
+}
+
+.myCover{
+
+	width: 100%;
+	height: 400px;
+	margin-top: -30px;
+}
+.myProfile{
+	border: 4px solid cadetblue;
+	width: 200px;
+	position: absolute;
+	z-index: 10;
+	margin-left: 100px;
+	margin-top: 250px;
+}
+
+.invates{
+	position: absolute;
+	z-index: 11;
+	margin-left: 45%;
+	margin-top: 3%;
+
+}
+.modal-content{
+	margin: 50px;
+}
+.friendInvate{
+	margin: 10px;
+	margin-left: 30px;
+}
+
+.boxPic{
+	width: 50px;
+	display: inline-block;
+
+}
+.boxFriend{
+
+	width: 105px;
+	height: 110px;
+	border: 1px solid black;
+	display: inline-block;
+	float: left;
 }

@@ -1,0 +1,20 @@
+<div class="requestsContainer">
+
+
+        <div  class="modal-dialog">
+            <div class="modal-content">
+                <h2>Friends Requests</h2>
+                <div ng-repeat="user in requests" class="friendInvate">
+
+                    <h3>{{user.user.username}}</h3>
+                    <img ng-src="{{user.user.profileImageData}}">
+                    <button ng-click="accept(user.id)" type="button" class="btn btn-info" data-dismiss="modal">Accept</button>
+                    <button ng-click="cancel()" type="button" class="btn btn-info">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+

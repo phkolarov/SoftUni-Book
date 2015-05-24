@@ -16,20 +16,49 @@ app.factory('profile', ['$resource', 'baseServiceUrl', '$http','authentication',
     };
 
 
-    var resource = $resource(url, null,
-        {
-            'update': { method:'PUT' }
-        });
+
 
     function setProfileInfo(data){
+
+        var resource = $resource(url, null,
+            {
+                'update': { method:'PUT' }
+            });
 
         return resource.update(data);
     }
 
-    return{
+    function getFriendsRequests(){
 
+    var resource = $resource(url+ 'requests');
+
+        return resource.query()
+    }
+
+    function acceptRequest(requestId){
+
+        var serviceUrl = url + 'requests/'+ requestId+ '?status=approved';
+        var resource = $resource(serviceUrl, null,
+            {
+                'update': { method:'PUT' }
+            });
+
+        return resource.update();
+    }
+
+    function getFriends(){
+        var resource = $resource(url+ 'friends');
+
+        return resource.query();
+    }
+
+
+    return{
         getProfileInfo: getProfileInfo,
-        setProfileInfo: setProfileInfo
+        setProfileInfo: setProfileInfo,
+        getRequests: getFriendsRequests,
+        acceptRequest: acceptRequest,
+        getFriends: getFriends
     }
 
 
