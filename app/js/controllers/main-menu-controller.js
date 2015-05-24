@@ -27,7 +27,6 @@ app.controller('MainMenuCtrl', ['$scope','users','authentication','notifyService
     profile.getRequests()
         .$promise
         .then(function (data) {
-            console.log(data.length);
 
             $scope.count = function () {
 

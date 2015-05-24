@@ -117,3 +117,25 @@ span{
 	display: inline-block;
 	float: left;
 }
+.newsFeedContainer{
+	border: 1px solid lightgrey;
+	border-radius: 5px;
+	padding: 10px;
+
+}
+.news{
+	border: 1px solid darkgrey;
+	padding: 10px;
+	border-radius: 5px;
+	background-color: #e5e5e5;
+}
+.feedProfilePic{
+	width: 50px;
+	display: inline-block;
+
+}
+.comments{
+	margin-top: -22px;
+	padding: 0px;
+	width: 550px;
+}

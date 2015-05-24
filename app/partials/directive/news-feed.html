@@ -1,10 +1,46 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<div class="newsFeedContainer">
 
-</body>
-</html>
+    <div ng-repeat="news in feed">
+        <div class="panel panel-success" >
+
+            <div class="panel-heading">
+                <h4>{{news.author.name}}</h4>
+
+                <p>{{news.date | date:'dd MMM yyyy HH:mm:ss'}}</p>
+                <img src="" class="feedProfilePic" ng-src="{{news.author.profileImageData}}"
+                     ng-if="news.author.profileImageData"/>
+                <img src="" class="feedProfilePic" ng-src="{{defaultProfileImageData}}"
+                     ng-if="!news.author.profileImageData"/>
+            </div>
+
+
+            <div class="panel-body">
+                <h4>{{news.postContent}}</h4>
+            </div>
+        </div>
+        <div class="comments" ng-repeat="comments in news.comments">
+
+            <div class="panel panel-primary" >
+
+                <div class="panel-heading">
+                    <h4>{{comments.author.name}}</h4>
+
+                    <p>{{comments.date | date:'dd MMM yyyy HH:mm:ss'}}</p>
+                    <img src="" class="feedProfilePic" ng-src="{{comments.author.profileImageData}}"
+                         ng-if="comments.author.profileImageData"/>
+                    <img src="" class="feedProfilePic" ng-src="{{defaultProfileImageData}}"
+                         ng-if="!comments.author.profileImageData"/>
+                </div>
+
+
+                <div class="panel-body">
+                    <h4>{{comments.commentContent}}</h4>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>

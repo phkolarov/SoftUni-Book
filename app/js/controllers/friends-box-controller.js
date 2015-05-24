@@ -1,19 +1,9 @@
 app.controller('FriendsBoxCtrl', [ '$scope','profile','authentication', function ($scope,profile,authentication) {
 
 
-    //authentication.setHeaders();
-    //var boxData = users.friendsBox()
-    //    .$promise
-    //    .then(function (data) {
-    //        console.log(data)
-    //    }, function(error){
-    //        console.log(error)
-    //    })
-
     profile.getFriends()
         .$promise
         .then(function (data) {
-            console.log(data);
 
             if(data.length>6){
                 data.slice(6,data.length)

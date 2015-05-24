@@ -52,13 +52,21 @@ app.factory('profile', ['$resource', 'baseServiceUrl', '$http','authentication',
         return resource.query();
     }
 
+    function getNewsFeed(){
+     var resouce = $resource(url + 'feed?StartPostId=&PageSize=5');
+
+        console.log(url + 'feed?StartPostId=&PageSize=5');
+
+        return resouce.query();
+    }
 
     return{
         getProfileInfo: getProfileInfo,
         setProfileInfo: setProfileInfo,
         getRequests: getFriendsRequests,
         acceptRequest: acceptRequest,
-        getFriends: getFriends
+        getFriends: getFriends,
+        getNewsFeed: getNewsFeed
     }
 
 

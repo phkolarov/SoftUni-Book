@@ -4,7 +4,6 @@ app.controller('FriendsRequests', ['$scope','profile','$route', 'notifyService',
     profile.getRequests()
         .$promise
         .then(function (data) {
-            console.log(data)
             $scope.requests = data;
         }, function (error) {
             console.log('FF')
