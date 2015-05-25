@@ -55,7 +55,6 @@ app.factory('profile', ['$resource', 'baseServiceUrl', '$http','authentication',
     function getNewsFeed(){
      var resouce = $resource(url + 'feed?StartPostId=&PageSize=5');
 
-        console.log(url + 'feed?StartPostId=&PageSize=5');
 
         return resouce.query();
     }
