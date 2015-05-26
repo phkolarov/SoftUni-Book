@@ -43,12 +43,21 @@
                 </div>
 
 
-                <div class="panel-body">
+                <div class="panel-body" ng-init="selfCheck(comments.author.username)">
                     <h4>{{comments.commentContent}}</h4>
-                    <div ng-if="selfCheck()" ng-init="">
-                        <button>Edit</button>
-                        <button>Delete</button>
+
+                    <!-- EDIT DELETE COMMENTS 1-->
+
+                    <div ng-if="comments.author.username == username">
+                        <button class="btn btn-info" ng-click="showEditField(comments.id)">Edit</button>
+                        <button class="btn btn-info" ng-click="deleteComment(news.id,comments.id)">Delete</button>
+
                     </div>
+                    <form ng-show="commentEdit && comments.id == checkId">
+                        <span> {{editComment}}</span>
+                        <input type="text"  ng-model="editedComment" placeholder="Your comment">
+                        <button class="btn btn-info" ng-click="editComment(news.id,comments.id, editedComment)">post</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -71,13 +80,22 @@
                     </div>
 
 
-                    <div class="panel-body">
+                    <div class="panel-body" ng-init="selfCheckMore(comments.author.username)">
                         <h4>{{comments.commentContent}}</h4>
 
-                        <div>
-                            <button>Edit</button>
-                            <button>Delete</button>
+                        <!-- EDIT DELETE COMMENTS 2-->
+
+                        <div ng-show="comments.author.username == username">
+                            <button class="btn btn-info" ng-click="showEditField(comments.id)">Edit</button>
+                            <button class="btn btn-info" ng-click="deleteComment(news.id,comments.id)">Delete</button>
+
                         </div>
+                        <form ng-show="commentEdit && comments.id == checkId">
+                            <span> {{editComment}}</span>
+                            <input type="text"  ng-model="editedComment" placeholder="Your comment">
+                            <button class="btn btn-info" ng-click="editComment(news.id,comments.id, editedComment)">post</button>
+                        </form>
+
                     </div>
                 </div>
             </div>

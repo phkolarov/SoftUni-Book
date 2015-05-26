@@ -33,12 +33,39 @@ app.factory('post', ['$resource', 'baseServiceUrl', '$http','authentication',fun
         return resource.query();
     }
 
+    function editComment(postId, commentId, data){
+        var serviceUrl = url + postId + '/comments/' + commentId
+
+
+        var resource = $resource(serviceUrl, null,
+            {
+                'update': { method:'PUT' }
+            });
+
+       return resource.update(data);
+    }
+
+    function deleteComment(postId, commentId){
+        var serviceUrl = url + postId + '/comments/' + commentId
+
+
+        var resource = $resource(serviceUrl, null,
+            {
+                'update': { method:'PUT' }
+            });
+
+        return resource.delete();
+    }
+
 
     return{
         likePost: likePost,
         unlikePost: unlikePost,
         addComment: addComments,
-        moreComments: moreComments
+        moreComments: moreComments,
+        editComment: editComment,
+        deleteComment:deleteComment
+
     }
 
 }]);

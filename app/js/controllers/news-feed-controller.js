@@ -6,7 +6,6 @@ app.controller('NewsFeedCtrl', ['$scope', 'profile','post','notifyService','$rou
             .then(function (data) {
 
                 $scope.feed = data;
-                console.log(data)
             }, function (error) {
                 console.log(error);
             });
@@ -104,11 +103,46 @@ app.controller('NewsFeedCtrl', ['$scope', 'profile','post','notifyService','$rou
                         console.log(error)
                     })
         };
+    };
+
+    $scope.username = localStorage.username;
+
+    $scope.commentEdit = false;
+
+    $scope.showEditField = function (id) {
+        $scope.checkId = id;
+        $scope.commentEdit = !$scope.commentEdit;
+    };
+
+
+    $scope.editComment = function (postId,commentId,data) {
+
+       var obj = {commentContent: data};
+
+        post.editComment(postId,commentId,obj)
+            .$promise
+            .then(function (data) {
+                notifyService.showInfo('Edited');
+                $route.reload()
+
+            }, function (error) {
+                console.log(error)
+                notifyService.showError('Error on edit comment')
+            })
     }
 
 
+    $scope.deleteComment = function (postId,commentId) {
 
+        post.deleteComment(postId,commentId)
+            .$promise
+            .then(function (data) {
+                notifyService.showInfo('Deleted');
+                $route.reload()
 
-
+            }, function (error) {
+                notifyService.showError('Error on delete comment')
+            })
+    }
 
 }]);

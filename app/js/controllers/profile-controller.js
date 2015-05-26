@@ -12,4 +12,8 @@ app.controller('ProfilePageCtrl', ['$scope', 'profile','notifyService', function
             notifyService.showError('Error - can\'t load profile page')
         })
 
+
+
+
+
 }]);
