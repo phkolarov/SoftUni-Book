@@ -40,11 +40,29 @@ app.factory('users', ['$resource', 'baseServiceUrl', '$http','authentication',  
 
     }
 
+
+    function getProfilePage(){
+        var user = localStorage.username;
+        var serviceUrl = url + user + '/wall?StartPostId=&PageSize=5';
+       console.log(serviceUrl)
+        var resource = $resource(serviceUrl);
+
+        return resource.query()
+
+    }
+
+    function getFriendPage(){
+
+
+
+    }
+
     return {
         login: login,
         register: register,
         logout: logout,
-        friendsBox: friendsBox
+        friendsBox: friendsBox,
+        getProfilePage:getProfilePage
     }
 }]);
 

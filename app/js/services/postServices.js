@@ -57,6 +57,18 @@ app.factory('post', ['$resource', 'baseServiceUrl', '$http','authentication',fun
         return resource.delete();
     }
 
+    function addPost (data){
+        var resource = $resource(url);
+        var username = localStorage.username
+
+        var obj = {
+            postContent: data,
+            username:username
+        };
+
+        return resource.save(obj);
+    }
+
 
     return{
         likePost: likePost,
@@ -64,8 +76,8 @@ app.factory('post', ['$resource', 'baseServiceUrl', '$http','authentication',fun
         addComment: addComments,
         moreComments: moreComments,
         editComment: editComment,
-        deleteComment:deleteComment
-
+        deleteComment:deleteComment,
+        addPost:addPost
     }
 
 }]);

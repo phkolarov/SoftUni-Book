@@ -5,4 +5,125 @@
     <img class="myCover" class="coverImg" ng-src="{{cover}}">
 
 
+    <div id="postContainer">
+
+        <textarea rows="4" cols="50" ng-model="myPost">
+        </textarea>
+
+        <button class="btn btn-success"  ng-click="postMsg()">POST</button>
+
+
+    </div>
+
+<div id="myWallContainer">
+
+    <div ng-repeat="news in myWall"  ng-init="checkComments(news.totalCommentsCount)">
+        <div class="panel panel-success" >
+
+            <div class="panel-heading">
+                <h4>{{news.author.name}}</h4>
+
+                <p>{{news.date | date:'dd MMM yyyy HH:mm:ss'}}</p>
+                <img src="" class="feedProfilePic" ng-src="{{news.author.profileImageData}}"
+                     ng-if="news.author.profileImageData"/>
+                <img src="" class="feedProfilePic" ng-src="{{defaultProfileImageData}}"
+                     ng-if="!news.author.profileImageData"/>
+            </div>
+
+
+            <div class="panel-body">
+                <h4>{{news.postContent}}</h4>
+                <span >Likes - {{news.likesCount}}</span>
+                <span >Comments - {{news.totalCommentsCount}}</span>
+                <button class="btn btn-info" ng-click="likeUnlikeFunc(news.id, news.liked)" ng-init="likes(news.liked)">{{like}} </button>
+                <button class="btn btn-info" ng-click="comment()">comment</button>
+
+                <form ng-show="showComment">
+                    <input type="text"  ng-model="current" placeholder="Your comment">
+                    <button class="btn btn-info" ng-click="postComment(current, news.id)">post</button>
+                </form>
+
+            </div>
+        </div>
+        <div class="comments" ng-repeat="comments in news.comments">
+
+            <div class="panel panel-primary" >
+
+                <div class="panel-heading">
+                    <h4>{{comments.author.name}}</h4>
+
+                    <p>{{comments.date | date:'dd MMM yyyy HH:mm:ss'}}</p>
+                    <img src="" class="feedProfilePic" ng-src="{{comments.author.profileImageData}}"
+                         ng-if="comments.author.profileImageData"/>
+                    <img src="" class="feedProfilePic" ng-src="{{defaultProfileImageData}}"
+                         ng-if="!comments.author.profileImageData"/>
+                </div>
+
+
+                <div class="panel-body" ng-init="selfCheck(comments.author.username)">
+                    <h4>{{comments.commentContent}}</h4>
+
+                    <!-- EDIT DELETE COMMENTS 1-->
+
+                    <div ng-if="comments.author.username == username">
+                        <button class="btn btn-info" ng-click="showEditField(comments.id)">Edit</button>
+                        <button class="btn btn-info" ng-click="deleteComment(news.id,comments.id)">Delete</button>
+
+                    </div>
+                    <form ng-show="commentEdit && comments.id == checkId">
+                        <span> {{editComment}}</span>
+                        <input type="text"  ng-model="editedComment" placeholder="Your comment">
+                        <button class="btn btn-info" ng-click="editComment(news.id,comments.id, editedComment)">post</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div ng-show="commentsList">
+
+
+            <div class="comments" ng-repeat="comments in otherComments">
+
+                <div class="panel panel-primary" >
+
+                    <div class="panel-heading">
+                        <h4>{{comments.author.name}}</h4>
+
+                        <p>{{comments.date | date:'dd MMM yyyy HH:mm:ss'}}</p>
+                        <img src="" class="feedProfilePic" ng-src="{{comments.author.profileImageData}}"
+                             ng-if="comments.author.profileImageData"/>
+                        <img src="" class="feedProfilePic" ng-src="{{defaultProfileImageData}}"
+                             ng-if="!comments.author.profileImageData"/>
+                    </div>
+
+
+                    <div class="panel-body" ng-init="selfCheckMore(comments.author.username)">
+                        <h4>{{comments.commentContent}}</h4>
+
+                        <!-- EDIT DELETE COMMENTS 2-->
+
+                        <div ng-show="comments.author.username == username">
+                            <button class="btn btn-info" ng-click="showEditField(comments.id)">Edit</button>
+                            <button class="btn btn-info" ng-click="deleteComment(news.id,comments.id)">Delete</button>
+
+                        </div>
+                        <form ng-show="commentEdit && comments.id == checkId">
+                            <span> {{editComment}}</span>
+                            <input type="text"  ng-model="editedComment" placeholder="Your comment">
+                            <button class="btn btn-info" ng-click="editComment(news.id,comments.id, editedComment)">post</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <button class="btn btn-info" ng-if="moreComments" ng-click="showMoreComments(news.totalCommentsCount, news.id )" >more comments</button>
+
+    </div>
+</div>
+
+
 </div>

@@ -21,6 +21,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="profile-page.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/partials/directive/profile-page.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.8846154">
+              <caret line="9" column="53" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile-controller.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/js/controllers/profile-controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.33333334">
+              <caret line="88" column="23" selection-start-line="88" selection-start-column="19" selection-end-line="88" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/css/app.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-26.92">
+              <caret line="159" column="23" selection-start-line="159" selection-start-column="23" selection-end-line="159" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="profile.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/partials/profile.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -31,31 +61,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile-page.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/partials/directive/profile-page.html">
+      <file leaf-file-name="news-feed.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/partials/directive/news-feed.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.9230769">
-              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+            <state vertical-scroll-proportion="43.46154">
+              <caret line="0" column="29" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile-controller.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/js/controllers/profile-controller.js">
+      <file leaf-file-name="postServices.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/js/services/postServices.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3203991">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/css/app.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-33.36">
-              <caret line="146" column="17" selection-start-line="146" selection-start-column="17" selection-end-line="146" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -80,7 +100,6 @@
         <option value="$PROJECT_DIR$/app/js/controllers/edit-profile-controller.js" />
         <option value="$PROJECT_DIR$/app/partials/directive/profile.html" />
         <option value="$PROJECT_DIR$/app/js/directives/profilePage.js" />
-        <option value="$PROJECT_DIR$/app/partials/directive/profile-page.html" />
         <option value="$PROJECT_DIR$/app/js/directives/friendsBox.js" />
         <option value="$PROJECT_DIR$/app/js/directives/friendsRequests.js" />
         <option value="$PROJECT_DIR$/app/partials/directive/edit-profile.html" />
@@ -98,11 +117,13 @@
         <option value="$PROJECT_DIR$/app/js/services/profileServices.js" />
         <option value="$PROJECT_DIR$/app/partials/directive/friends-box.html" />
         <option value="$PROJECT_DIR$/app/js/controllers/friends-box-controller.js" />
-        <option value="$PROJECT_DIR$/app/js/services/postServices.js" />
         <option value="$PROJECT_DIR$/app/partials/directive/news-feed.html" />
         <option value="$PROJECT_DIR$/app/js/controllers/news-feed-controller.js" />
         <option value="$PROJECT_DIR$/app/partials/profile.html" />
+        <option value="$PROJECT_DIR$/app/js/services/usersServices.js" />
+        <option value="$PROJECT_DIR$/app/partials/directive/profile-page.html" />
         <option value="$PROJECT_DIR$/app/css/app.css" />
+        <option value="$PROJECT_DIR$/app/js/services/postServices.js" />
         <option value="$PROJECT_DIR$/app/js/controllers/profile-controller.js" />
       </list>
     </option>
@@ -390,10 +411,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="1" width="1918" height="1038" extended-state="0" />
-    <editor active="false" />
+    <frame x="1" y="1" width="1918" height="1038" extended-state="1" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25184017" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25184017" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -422,7 +443,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25184017" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -553,13 +574,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/services/usersServices.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="141" />
         </state>
       </provider>
     </entry>
@@ -746,14 +760,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/services/profileServices.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4722838">
-          <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/partials/directive/friends-box.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.038812786">
@@ -762,34 +768,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/services/postServices.js">
+    <entry file="file://$PROJECT_DIR$/app/js/services/profileServices.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6607539">
-          <caret line="56" column="31" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/controllers/news-feed-controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13192904">
-          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/partials/directive/news-feed.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.81936246">
-          <caret line="52" column="114" selection-start-line="52" selection-start-column="114" selection-end-line="52" selection-end-column="114" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/css/app.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-33.36">
-          <caret line="146" column="17" selection-start-line="146" selection-start-column="17" selection-end-line="146" selection-end-column="17" />
+        <state vertical-scroll-proportion="43.46154">
+          <caret line="0" column="29" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -802,18 +792,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/controllers/news-feed-controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="57" selection-start-line="0" selection-start-column="53" selection-end-line="0" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/services/usersServices.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.52771616">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/css/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-26.92">
+          <caret line="159" column="23" selection-start-line="159" selection-start-column="23" selection-end-line="159" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/services/postServices.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/partials/directive/profile-page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.9230769">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        <state vertical-scroll-proportion="-5.8846154">
+          <caret line="9" column="53" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="53" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/js/controllers/profile-controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3203991">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="88" column="23" selection-start-line="88" selection-start-column="19" selection-end-line="88" selection-end-column="23" />
           <folding />
         </state>
       </provider>
