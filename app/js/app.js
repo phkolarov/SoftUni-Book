@@ -17,17 +17,17 @@ app.config(['$routeProvider', 'localStorageServiceProvider',function ($routeProv
         }
     });
 
-    $routeProvider.when('/friends',{
-        templateUrl: 'partials/friends-page.html',
-        controller: 'HomePageCtrl'
-    });
+    //$routeProvider.when('/friends',{
+    //    templateUrl: 'partials/friends-page.html',
+    //    controller: 'HomePageCtrl'
+    //});
 
     $routeProvider.when('/profile',{
         templateUrl: 'partials/profile.html',
         controller: 'HomePageCtrl'
     });
 
-    $routeProvider.when('/friendPage',{
+    $routeProvider.when('/users/:username',{
         templateUrl: 'partials/current-friend-page.html',
         controller: 'HomePageCtrl'
     });
@@ -41,6 +41,9 @@ app.config(['$routeProvider', 'localStorageServiceProvider',function ($routeProv
         templateUrl: 'partials/change-password.html',
         controller: 'HomePageCtrl'
     });
+
+
+
     $routeProvider.otherwise({
         redirectTo: '/'
     });

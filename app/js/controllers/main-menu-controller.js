@@ -40,8 +40,4 @@ app.controller('MainMenuCtrl', ['$scope','users','authentication','notifyService
         }, function (error) {
             console.log(error);
         })
-
-
-
-
 }]);

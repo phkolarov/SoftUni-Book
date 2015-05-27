@@ -4,10 +4,17 @@
 
     <ul>
         <div class="boxFriend" ng-repeat="friend in friends">
-            <p>{{friend.name}}</p>
-            <img src="" class="boxPic" ng-src="{{friend.profileImageData}}" ng-if="friend.profileImageData"/>
-            <img src="" class="boxPic" ng-src="{{defaultProfileImageData}}" ng-if="!friend.profileImageData"/>
+            <a ng-href="#/users/{{friend.username}}">
+                <p>{{friend.name}}</p>
+            </a>
+            <a ng-href="#/users/{{friend.username}}">
+                <img src="" class="boxPic" ng-src="{{friend.profileImageData}}" ng-if="friend.profileImageData"/>
+            </a>
+            <a ng-href="#/users/{{friend.username}}">
+                <img src="" class="boxPic" ng-src="{{defaultProfileImageData}}" ng-if="!friend.profileImageData"/>
+            </a>
         </div>
+
 
     </ul>
 

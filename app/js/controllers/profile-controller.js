@@ -7,6 +7,7 @@ app.controller('ProfilePageCtrl', ['$scope', 'profile','notifyService','users','
 
             $scope.picture = data.profileImageData;
             $scope.cover = data.coverImageData;
+            $scope.name = data.name
 
         }, function (error) {
             notifyService.showError('Error - can\'t load profile page')

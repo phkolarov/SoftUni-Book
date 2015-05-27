@@ -14,12 +14,6 @@ app.controller('HomePageCtrl', ['$scope', '$route', function ($scope, $route) {
 
                console.log(showInvates.show)
            }
-
-
-
-
     }
-
-
 
 }]);

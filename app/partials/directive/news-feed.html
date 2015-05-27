@@ -44,9 +44,8 @@
 
 
                 <div class="panel-body" ng-init="selfCheck(news.totalCommentsCount, news.id)">
-                    <h4>{{comments.commentContent}}</h4>
 
-                    <!-- EDIT DELETE COMMENTS 1-->
+                    <h4>{{comments.commentContent}}</h4>
 
                     <div ng-if="comments.author.username == username">
                         <button class="btn btn-info" ng-click="showEditField(comments.id)">Edit</button>
@@ -81,9 +80,8 @@
 
 
                     <div class="panel-body" ng-init="selfCheckMore(comments.author.username)">
-                        <h4>{{comments.commentContent}}</h4>
 
-                        <!-- EDIT DELETE COMMENTS 2-->
+                        <h4>{{comments.commentContent}}</h4>
 
                         <div ng-show="comments.author.username == username">
                             <button class="btn btn-info" ng-click="showEditField(comments.id)">Edit</button>

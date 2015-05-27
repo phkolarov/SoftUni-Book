@@ -34,17 +34,21 @@ app.factory('users', ['$resource', 'baseServiceUrl', '$http','authentication',  
         return resource.save(data)
     }
 
-    //HOMEPAGE FRIENDS BOX
-    function friendsBox(){
+    //HOMEPAGE DATA
+    function friendsData(user){
 
+        var user = user
+        var serviceUrl = url + user;
+        var resource = $resource(serviceUrl);
 
+        return  resource.get();
     }
+
 
 
     function getProfilePage(){
         var user = localStorage.username;
         var serviceUrl = url + user + '/wall?StartPostId=&PageSize=5';
-       console.log(serviceUrl)
         var resource = $resource(serviceUrl);
 
         return resource.query()
@@ -54,15 +58,14 @@ app.factory('users', ['$resource', 'baseServiceUrl', '$http','authentication',  
     function getFriendPage(){
 
 
-
     }
 
     return {
         login: login,
         register: register,
         logout: logout,
-        friendsBox: friendsBox,
-        getProfilePage:getProfilePage
+        getProfilePage: getProfilePage,
+        friendsData: friendsData
     }
 }]);
 
