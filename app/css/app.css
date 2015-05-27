@@ -165,3 +165,7 @@ button{
 	border: 1px solid lightseagreen;
 	border-radius: 10px;
 }
+
+textarea::-webkit-input-placeholder {
+	font-size: 25px;
+}

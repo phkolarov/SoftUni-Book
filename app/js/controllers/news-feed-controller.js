@@ -14,8 +14,9 @@ app.controller('NewsFeedCtrl', ['$scope', 'profile','post','notifyService','$rou
 
     $scope.showComment = false;
 
-    $scope.comment = function(){
+    $scope.comment = function(id){
         $scope.showComment = !$scope.showComment;
+        $scope.checkCurrentCommentValue = id
     };
 
 
@@ -71,10 +72,11 @@ app.controller('NewsFeedCtrl', ['$scope', 'profile','post','notifyService','$rou
 
 
 
-    $scope.checkComments = function (count) {
+    $scope.checkComments = function (count, id) {
         if(count>3){
 
             $scope.moreComments = true;
+            $scope.checkMoreCommentsValue = id;
 
         }else{
             $scope.moreComments = false;

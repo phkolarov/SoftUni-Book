@@ -26,9 +26,12 @@ app.controller('ProfilePageCtrl', ['$scope', 'profile','notifyService','users','
 
     $scope.showComment = false;
 
-    $scope.comment = function(){
+    $scope.comment = function(id){
         $scope.showComment = !$scope.showComment;
+        $scope.checkCurrentCommentValue = id
     };
+
+
 
 
     $scope.likes = function (liked) {
@@ -66,7 +69,7 @@ app.controller('ProfilePageCtrl', ['$scope', 'profile','notifyService','users','
         }
     }   ;
 
-
+    $scope.one = "123"
 
     $scope.postComment = function (current,id) {
 
@@ -83,10 +86,11 @@ app.controller('ProfilePageCtrl', ['$scope', 'profile','notifyService','users','
 
 
 
-    $scope.checkComments = function (count) {
+    $scope.checkComments = function (count, id) {
         if(count>3){
 
             $scope.moreComments = true;
+            $scope.checkMoreCommentsValue = id;
 
         }else{
             $scope.moreComments = false;
