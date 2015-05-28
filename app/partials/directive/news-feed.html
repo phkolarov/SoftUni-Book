@@ -1,6 +1,6 @@
 <div class="newsFeedContainer">
 
-    <div ng-repeat="news in feed"  ng-init="checkComments(news.totalCommentsCount)">
+    <div ng-repeat="news in feed"  ng-init="checkComments(news.totalCommentsCount,news.id)">
         <div class="panel panel-success" >
 
             <div class="panel-heading">
@@ -18,8 +18,10 @@
                 <h4>{{news.postContent}}</h4>
                 <span >Likes - {{news.likesCount}}</span>
                 <span >Comments - {{news.totalCommentsCount}}</span>
-                <button class="btn btn-info" ng-click="likeUnlikeFunc(news.id, news.liked)" ng-init="likes(news.liked)">{{like}} </button>
+                <button class="btn btn-info" ng-show="!news.liked" ng-click="likeFunc(news.id)" ng-init="likes(news.liked)">Like </button>
+                <button class="btn btn-info" ng-show="news.liked" ng-click="unlikeFunc(news.id)" ng-init="likes(news.liked)">Unlike </button>
                 <button class="btn btn-info" ng-click="comment(news.id)">comment</button>
+                <button class="btn btn-danger" ng-show="news.author.username == username" ng-click="deletePost(news.id)">delete</button>
 
                 <form ng-show="showComment && checkCurrentCommentValue == news.id">
                     <input type="text"  ng-model="current" placeholder="Your comment">
@@ -47,10 +49,11 @@
 
                     <h4>{{comments.commentContent}}</h4>
 
+                    <button class="btn btn-info" ng-show="!comments.liked" ng-click="likeComFunc(news.id,comments.id)" ng-init="likes(comments.liked)">Like </button>
+                    <button class="btn btn-info" ng-show="comments.liked" ng-click="unlikeComFunc(news.id,comments.id)" ng-init="likes(comments.liked)">Unlike </button>
                     <div ng-if="comments.author.username == username">
+                        <button class="btn btn-danger" ng-click="deleteComment(news.id,comments.id)">Delete</button>
                         <button class="btn btn-info" ng-click="showEditField(comments.id)">Edit</button>
-                        <button class="btn btn-info" ng-click="deleteComment(news.id,comments.id)">Delete</button>
-
                     </div>
                     <form ng-show="commentEdit && comments.id == checkId">
                         <span> {{editComment}}</span>
@@ -83,10 +86,12 @@
 
                         <h4>{{comments.commentContent}}</h4>
 
+                        <button class="btn btn-info" ng-show="!comments.liked" ng-click="likeComFunc(news.id,comments.id)" ng-init="likes(comments.liked)">Like </button>
+                        <button class="btn btn-info" ng-show="comments.liked" ng-click="unlikeComFunc(news.id,comments.id)" ng-init="likes(comments.liked)">Unlike </button>
+
                         <div ng-show="comments.author.username == username">
                             <button class="btn btn-info" ng-click="showEditField(comments.id)">Edit</button>
-                            <button class="btn btn-info" ng-click="deleteComment(news.id,comments.id)">Delete</button>
-
+                            <button class="btn btn-danger" ng-click="deleteComment(news.id,comments.id)">Delete</button>
                         </div>
                         <form ng-show="commentEdit && comments.id == checkId">
                             <span> {{editComment}}</span>

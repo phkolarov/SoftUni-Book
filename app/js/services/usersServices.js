@@ -55,9 +55,13 @@ app.factory('users', ['$resource', 'baseServiceUrl', '$http','authentication',  
 
     }
 
-    function getFriendPage(){
+    function getFriendPage(user){
 
+        var user = user;
+        var serviceUrl = url + user + '/wall?StartPostId=&PageSize=5';
+        var resource = $resource(serviceUrl);
 
+        return resource.query()
     }
 
     return {
@@ -65,7 +69,8 @@ app.factory('users', ['$resource', 'baseServiceUrl', '$http','authentication',  
         register: register,
         logout: logout,
         getProfilePage: getProfilePage,
-        friendsData: friendsData
+        friendsData: friendsData,
+        getFriendPage:getFriendPage
     }
 }]);
 

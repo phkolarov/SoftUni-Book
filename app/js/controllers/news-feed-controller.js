@@ -4,6 +4,7 @@ app.controller('NewsFeedCtrl', ['$scope', 'profile','post','notifyService','$rou
         profile.getNewsFeed()
             .$promise
             .then(function (data) {
+                console.log(data);
 
                 $scope.feed = data;
             }, function (error) {
@@ -20,40 +21,64 @@ app.controller('NewsFeedCtrl', ['$scope', 'profile','post','notifyService','$rou
     };
 
 
-    $scope.likes = function (liked) {
+    $scope.likeFunc = function (id) {
 
-        if(liked == false){
-            $scope.like = 'like';
-        }else{
-            $scope.like = 'unlike';
-        }
+        post.likePost(id)
+            .$promise
+            .then(function (data) {
+                notifyService.showInfo('Liked');
+                $route.reload();
+
+            }, function (error) {
+                notifyService.showError('Error on like');
+            })
+
 
     };
 
-    $scope.likeUnlikeFunc = function (id,liked) {
+    $scope.unlikeFunc = function (id) {
 
-        if($scope.like == 'like'){
-            $scope.like = 'unlike';
-            post.likePost(id)
-                .$promise
-                .then(function (data) {
-                    notifyService.showInfo('Liked')
-                }, function (error) {
-                    notifyService.showError('Error on like');
-                })
+        post.unlikePost(id)
+            .$promise
+            .then(function (data) {
+                notifyService.showInfo('Unliked');
+                $route.reload();
 
-        }else{
-            $scope.like = 'like';
-            post.unlikePost(id)
-                .$promise
-                .then(function (data) {
-                    notifyService.showInfo('Unliked')
+            }, function (error) {
+                notifyService.showError('Error on unlike');
 
-                }, function (error) {
-                    notifyService.showError('Error on unlike');
-                })
-        }
-    }   ;
+            })
+    };
+
+    $scope.likeComFunc= function (id,comId) {
+
+        post.likeComment(id,comId)
+            .$promise
+            .then(function (data) {
+                notifyService.showInfo('Liked');
+                $route.reload();
+
+            }, function (error) {
+                notifyService.showError('Error on like');
+            })
+    };
+
+    $scope.unlikeComFunc = function (id,comId) {
+
+        post.unlikeComment(id,comId)
+            .$promise
+            .then(function (data) {
+                notifyService.showInfo('Unliked');
+                $route.reload();
+
+            }, function (error) {
+                notifyService.showError('Error on unlike');
+
+            })
+
+    };
+
+
 
 
 
@@ -73,6 +98,7 @@ app.controller('NewsFeedCtrl', ['$scope', 'profile','post','notifyService','$rou
 
 
     $scope.checkComments = function (count, id) {
+
         if(count>3){
 
             $scope.moreComments = true;
@@ -80,7 +106,6 @@ app.controller('NewsFeedCtrl', ['$scope', 'profile','post','notifyService','$rou
 
         }else{
             $scope.moreComments = false;
-
         }
     };
 
@@ -130,6 +155,19 @@ app.controller('NewsFeedCtrl', ['$scope', 'profile','post','notifyService','$rou
             }, function (error) {
                 console.log(error)
                 notifyService.showError('Error on edit comment')
+            })
+    }
+
+    $scope.deletePost = function (id) {
+        post.deletePost(id)
+            .$promise
+            .then(function (data) {
+                notifyService.showInfo('Deleted');
+                $route.reload()
+                console.log(data)
+            }, function (error) {
+                notifyService.showError('Error on delete post')
+                console.log(error)
             })
     }
 

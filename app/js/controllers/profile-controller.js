@@ -1,4 +1,4 @@
-app.controller('ProfilePageCtrl', ['$scope', 'profile','notifyService','users','post','$route', function ($scope, profile,notifyService,users,post,$route) {
+app.controller('ProfilePageCtrl', ['$scope', 'profile','notifyService','users','post','$route','defaultCoverPicture','defaultProfilePicture', function ($scope, profile,notifyService,users,post,$route,defaultCoverPicture,defaultProfilePicture) {
 
 
     profile.getProfileInfo()
@@ -7,7 +7,19 @@ app.controller('ProfilePageCtrl', ['$scope', 'profile','notifyService','users','
 
             $scope.picture = data.profileImageData;
             $scope.cover = data.coverImageData;
-            $scope.name = data.name
+            $scope.name = data.name;
+
+            if($scope.cover === null){
+                $scope.cover  = defaultCoverPicture;
+            }else{
+                $scope.cover = data.coverImageData;
+            }
+            if($scope.picture === null){
+                $scope.picture =defaultProfilePicture;
+            }else{
+                $scope.picture = data.profileImageData;
+            }
+
 
         }, function (error) {
             notifyService.showError('Error - can\'t load profile page')
@@ -33,44 +45,63 @@ app.controller('ProfilePageCtrl', ['$scope', 'profile','notifyService','users','
     };
 
 
+    $scope.likeFunc = function (id) {
 
+        post.likePost(id)
+            .$promise
+            .then(function (data) {
+                notifyService.showInfo('Liked');
+                $route.reload();
 
-    $scope.likes = function (liked) {
+            }, function (error) {
+                notifyService.showError('Error on like');
+            })
 
-        if(liked == false){
-            $scope.like = 'like';
-        }else{
-            $scope.like = 'unlike';
-        }
 
     };
 
-    $scope.likeUnlikeFunc = function (id,liked) {
+    $scope.unlikeFunc = function (id) {
 
-        if($scope.like == 'like'){
-            $scope.like = 'unlike';
-            post.likePost(id)
-                .$promise
-                .then(function (data) {
-                    notifyService.showInfo('Liked')
-                }, function (error) {
-                    notifyService.showError('Error on like');
-                })
+        post.unlikePost(id)
+            .$promise
+            .then(function (data) {
+                notifyService.showInfo('Unliked');
+                $route.reload();
 
-        }else{
-            $scope.like = 'like';
-            post.unlikePost(id)
-                .$promise
-                .then(function (data) {
-                    notifyService.showInfo('Unliked')
+            }, function (error) {
+                notifyService.showError('Error on unlike');
 
-                }, function (error) {
-                    notifyService.showError('Error on unlike');
-                })
-        }
-    }   ;
+            })
+    };
 
-    $scope.one = "123"
+    $scope.likeComFunc= function (id,comId) {
+
+        post.likeComment(id,comId)
+            .$promise
+            .then(function (data) {
+                notifyService.showInfo('Liked');
+                $route.reload();
+
+            }, function (error) {
+                notifyService.showError('Error on like');
+            })
+    };
+
+    $scope.unlikeComFunc = function (id,comId) {
+
+        post.unlikeComment(id,comId)
+            .$promise
+            .then(function (data) {
+                notifyService.showInfo('Unliked');
+                $route.reload();
+
+            }, function (error) {
+                notifyService.showError('Error on unlike');
+
+            })
+
+    };
+
 
     $scope.postComment = function (current,id) {
 
@@ -172,6 +203,20 @@ app.controller('ProfilePageCtrl', ['$scope', 'profile','notifyService','users','
                 $route.reload()
             }, function (error) {
                 notifyService.showError('Error on post message');
+                console.log(error)
+            })
+    }
+
+    $scope.deletePost = function (id) {
+        post.deletePost(id)
+            .$promise
+            .then(function (data) {
+                notifyService.showInfo('Successfully deleted post');
+                $route.reload();
+                console.log(data)
+            }, function (error) {
+                notifyService.showError('Error on delete post');
+                $route.reload();
                 console.log(error)
             })
     }

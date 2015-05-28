@@ -20,6 +20,19 @@ app.factory('post', ['$resource', 'baseServiceUrl', '$http','authentication',fun
         return resource.delete();
     }
 
+    function likeComment(id, comId){
+        var resource = $resource(url + id + '/comments/' + comId + '/likes' );
+
+        return resource.save()
+    }
+    function unlikeComment(id,comId){
+        console.log(comId)
+        var resource = $resource(url + id + '/comments/' + comId + '/likes');
+
+        return resource.delete();
+
+    }
+
     function addComments(data,id){
         var resource = $resource(url + id + '/comments');
 
@@ -69,6 +82,13 @@ app.factory('post', ['$resource', 'baseServiceUrl', '$http','authentication',fun
         return resource.save(obj);
     }
 
+    function deletePost (id){
+        var serviceUrl = url + id
+        var resource = $resource(serviceUrl);
+
+        return resource.delete()
+    }
+
 
     return{
         likePost: likePost,
@@ -77,7 +97,10 @@ app.factory('post', ['$resource', 'baseServiceUrl', '$http','authentication',fun
         moreComments: moreComments,
         editComment: editComment,
         deleteComment:deleteComment,
-        addPost:addPost
+        addPost:addPost,
+        deletePost:deletePost,
+        likeComment:likeComment,
+        unlikeComment:unlikeComment
     }
 
 }]);
