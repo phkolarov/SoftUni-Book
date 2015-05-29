@@ -35,7 +35,7 @@
 
 	text-align: center;
 	width: 450px;
-	height: 410px;
+	height: 350px;
 	border: 1px solid black;
 }
 
@@ -120,8 +120,8 @@ span{
 }
 .boxFriend{
 
-	width: 105px;
-	height: 110px;
+	width: 125px;
+	height: 100px;
 	border: 1px solid black;
 	display: inline-block;
 	float: left;
@@ -188,4 +188,7 @@ textarea::-webkit-input-placeholder {
 }
 a{
 	color: white;
+}
+.boxFriend a {
+	color: dodgerblue;
 }
