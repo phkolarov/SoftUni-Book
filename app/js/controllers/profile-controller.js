@@ -193,10 +193,15 @@ app.controller('ProfilePageCtrl', ['$scope', 'profile','notifyService','users','
             })
     }
 
-    $scope.postMsg = function () {
+    $scope.postMsg = function (data) {
+
+        var obj = {
+            postContent: data,
+            username: $scope.username
+        };
 
 
-        post. addPost($scope.myPost)
+        post. addPost(obj)
             .$promise
             .then(function (data) {
                 notifyService.showInfo('Posted')

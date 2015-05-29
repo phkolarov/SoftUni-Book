@@ -6,12 +6,15 @@
         <img ng-src="{{cfProfileImg}}" class="currentProfile">
         <h1 class="name">{{name}}</h1>
 
-        <div id="postContainer">
+        <button class="btn btn-danger" class="isFriend" ng-show="isFriend" >FRIEND</button>
+        <button class="btn btn-danger" class="isFriend" ng-show="!isFriend && hasPendingRequest" >INVATED</button>
+        <button class="btn btn-danger" class="invate" ng-click="invate(usernamec)" ng-show="!isFriend && !hasPendingRequest">INVATE</button>
 
-        <textarea placeholder="What's on your ming?" rows="4" cols="50" ng-model="myPost">
+        <div id="postContainer" ng-show="isFriend">
+
+        <textarea  placeholder="What's on your ming?"  ng-model="myPost">
         </textarea>
-                <button class="btn btn-success"  ng-click="postMsg()">POST</button>
-
+                <button class="btn btn-success"  ng-click="postMsg(myPost,usernamec)">POST</button>
         </div>
 
         <div class="newsFeedContainer">
@@ -20,7 +23,7 @@
                         <div class="panel panel-success" >
 
                                 <div class="panel-heading">
-                                        <h4>{{news.author.name}}</h4>
+                                        <h4>{{news.author.name}} on <a ng-href="#/users/{{news.wallOwner.username}}"> {{news.wallOwner.name}} </a> wall</h4>
 
                                         <p>{{news.date | date:'dd MMM yyyy HH:mm:ss'}}</p>
                                         <img src="" class="feedProfilePic" ng-src="{{news.author.profileImageData}}"

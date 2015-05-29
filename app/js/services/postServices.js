@@ -70,14 +70,9 @@ app.factory('post', ['$resource', 'baseServiceUrl', '$http','authentication',fun
         return resource.delete();
     }
 
-    function addPost (data){
+    function addPost (obj){
         var resource = $resource(url);
         var username = localStorage.username
-
-        var obj = {
-            postContent: data,
-            username:username
-        };
 
         return resource.save(obj);
     }

@@ -4,7 +4,7 @@
         <div class="panel panel-success" >
 
             <div class="panel-heading">
-                <h4>{{news.author.name}}</h4>
+                <h4>{{news.author.name}} on <a ng-href="#/users/{{news.wallOwner.username}}"> {{news.wallOwner.name}} </a> wall</h4>
 
                 <p>{{news.date | date:'dd MMM yyyy HH:mm:ss'}}</p>
                 <img src="" class="feedProfilePic" ng-src="{{news.author.profileImageData}}"

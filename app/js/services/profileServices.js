@@ -13,9 +13,7 @@ app.factory('profile', ['$resource', 'baseServiceUrl', '$http','authentication',
         var resource = $resource(url);
 
         return resource.get()
-    };
-
-
+    }
 
 
     function setProfileInfo(data){
@@ -59,13 +57,21 @@ app.factory('profile', ['$resource', 'baseServiceUrl', '$http','authentication',
         return resouce.query();
     }
 
+    function sendFriendRequest(username){
+        console.log()
+        var resource = $resource(url+'/requests/'+ username);
+
+        return resource.save()
+    }
+
     return{
         getProfileInfo: getProfileInfo,
         setProfileInfo: setProfileInfo,
         getRequests: getFriendsRequests,
         acceptRequest: acceptRequest,
         getFriends: getFriends,
-        getNewsFeed: getNewsFeed
+        getNewsFeed: getNewsFeed,
+        sendFriendRequest:sendFriendRequest
     }
 
 

@@ -1,16 +1,21 @@
-app.controller('CurrentFriendCtrl', ['$scope', '$route','$routeParams','users','defaultCoverPicture','defaultProfilePicture','post','notifyService',function ($scope, $route,$routeParams,users,defaultCoverPicture,defaultProfilePicture,post, notifyService) {
+app.controller('CurrentFriendCtrl', ['$scope', '$route','$routeParams','users','defaultCoverPicture','defaultProfilePicture','post','notifyService','profile',function ($scope, $route,$routeParams,users,defaultCoverPicture,defaultProfilePicture,post, notifyService, profile) {
+
+    $scope.friend = false;
 
 
-console.log($routeParams);
-
-$scope.friend = false;
-
-users.friendsData($routeParams.username)
+    users.friendsData($routeParams.username)
     .$promise
     .then(function (data) {
 
-        if($scope.cfProfileImg === null){
-            $scope.cfProfileImg  = defaultProfilePicture;
+
+            $scope.isFriend = data.isFriend;
+            $scope.cfProfileImg = data.profileImageData;
+            $scope.cfCoverImg = data.coverImageData;
+            $scope.hasPendingRequest = data.hasPendingRequest;
+            console.log(data)
+            if($scope.cfProfileImg === null){
+            $scope.cfProfileImg = defaultProfilePicture;
+
         }else{
             $scope.cfProfileImg = data.profileImageData;
             console.log($scope.cfCoverImg)
@@ -21,7 +26,6 @@ users.friendsData($routeParams.username)
             $scope.cfCoverImg = data.coverImageData;
         }
 
-        console.log(data);
         $scope.name = data.name;
         $scope.usernamec = data.username;
 
@@ -30,7 +34,6 @@ users.friendsData($routeParams.username)
             .$promise
             .then(function (data) {
                 $scope.userFeed = data;
-                console.log(data)
             }, function (error) {
                 console.log(error)
             })
@@ -211,6 +214,38 @@ users.friendsData($routeParams.username)
             })
     }
 
+    $scope.postMsg = function (data,username) {
+
+        obj = {
+            postContent: data,
+            username: username
+        };
+
+        post.addPost(obj)
+            .$promise
+            .then(function (data) {
+                $route.reload()
+                notifyService.showInfo('Posted');
+            }, function (error) {
+                notifyService.showInfo('Error on posting message');
+                console.log(error)
+            })
+    }
+
+
+    $scope.invate = function (user) {
+
+
+        profile .sendFriendRequest(user)
+            .$promise
+            .then(function (data) {
+                $route.reload();
+                notifyService.showInfo('Invated');
+            }, function (error) {
+                $route.reload();
+                notifyService.showInfo('Problem with invate');
+            })
+    }
 
 
 
