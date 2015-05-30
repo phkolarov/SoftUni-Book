@@ -18,9 +18,16 @@
 
                     <form class="navbar-form" role="search">
 
-                        <input type="text" class="form-control" id="search" placeholder="Search">
+                        <input type="text" class="form-control" id="search" ng-model="search" placeholder="Search" ng-change="searchFunc()" ng-keyup="intest(search)">
 
                     </form>
+
+                    <div ng-show="showSearch" class="search-box">
+
+                        <div search-content></div>
+
+                    </div>
+
                 </div>
 
                 <div class="col-sm-4">

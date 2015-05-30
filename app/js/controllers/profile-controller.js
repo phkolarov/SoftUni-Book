@@ -118,39 +118,33 @@ app.controller('ProfilePageCtrl', ['$scope', 'profile','notifyService','users','
 
 
 
-    $scope.checkComments = function (count, id) {
-        if(count>3){
-
-            $scope.moreComments = true;
-            $scope.checkMoreCommentsValue = id;
-
-        }else{
-            $scope.moreComments = false;
-
-        }
-    };
-
     $scope.commentsList = false;
+    $scope.hideShowComments = 'Show more comments';
 
-    $scope.showMoreComments = function (count,id) {
-        $scope.commentsList = ! $scope.commentsList;
+    $scope.showMoreComments = function (id) {
 
-        if(count>3){
+        $scope.commentsList = !$scope.commentsList;
 
-            post.moreComments(id)
-                .$promise
-                .then(function (data) {
-                    var otherComments = [];
+        if($scope.hideShowComments == 'Show more comments'){
 
-                    for (var i = 3; i < data.length; i++) {
-                        otherComments.push(data[i]);
-                    }
-                    $scope.otherComments = otherComments;
+            $scope.hideShowComments = 'Hide more comments'
+        }else{
+            $scope.hideShowComments = 'Show more comments'
+        }
+        $scope.curId = id;
 
-                }, function (error) {
-                    console.log(error)
-                })
-        };
+        post.moreComments(id)
+            .$promise
+            .then(function (data) {
+                var otherComments = [];
+                for (var i = 3; i < data.length; i++) {
+                    otherComments.push(data[i]);
+                }
+                $scope.otherComments = otherComments;
+
+            }, function (error) {
+                console.log(error)
+            })
     };
 
     $scope.username = localStorage.username;
@@ -163,7 +157,7 @@ app.controller('ProfilePageCtrl', ['$scope', 'profile','notifyService','users','
     };
 
 
-    $scope.editComment = function (postId,commentId,data) {
+    $scope.changeComment = function (postId,commentId,data) {
 
         var obj = {commentContent: data};
 
@@ -225,6 +219,32 @@ app.controller('ProfilePageCtrl', ['$scope', 'profile','notifyService','users','
                 console.log(error)
             })
     }
+
+    $scope.editComment = false;
+
+    $scope.edit = function (id, data) {
+        $scope.editComment = !$scope.editComment;
+        $scope.checkCurrentEditValue = id;
+    };
+
+    $scope.editPost = function (id, data ) {
+
+        var obj = {
+            postContent: data
+        };
+
+        post.editPost(id,obj)
+            .$promise
+            .then(function (data) {
+                $route.reload();
+                notifyService.showInfo('Edited');
+            }, function (error) {
+                $route.reload();
+                notifyService.showError('Cannot edit post');
+            })
+
+    }
+
 
 
 }]);

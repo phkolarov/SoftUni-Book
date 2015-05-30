@@ -1,4 +1,4 @@
-app.controller('MainMenuCtrl', ['$scope','users','authentication','notifyService','$route','profile', function ($scope,users, authentication,notifyService, $route,profile) {
+app.controller('MainMenuCtrl', ['$scope','users','authentication','notifyService','$route','profile','defaultProfilePicture', function ($scope,users, authentication,notifyService, $route,profile,defaultProfilePicture) {
 
     $scope.logout = function(){
 
@@ -40,4 +40,44 @@ app.controller('MainMenuCtrl', ['$scope','users','authentication','notifyService
         }, function (error) {
             console.log(error);
         })
+
+    $scope.test = [
+        {kaka: "aka"},
+        {kaka: "aka"},
+        {kaka: "aka"},
+        {kaka: "aka"},
+        {kaka: "aka"}
+    ];
+
+    $scope.defaultProfilePicture = defaultProfilePicture;
+
+    $scope.intest = function (input) {
+
+    console.log(input)
+        users.searchByNameUser(input)
+            .$promise
+            .then(function (data) {
+                $scope.searchingUsers= data;
+                console.log(data)
+            }, function (error) {
+                console.log(error)
+            })
+    }
+
+    $scope.searchFunc = function () {
+
+        if($scope.search){
+
+            $scope.showSearch = true;
+
+        }else{
+            $scope.showSearch = false;
+        }
+    }
+
+
+
+
+
+
 }]);

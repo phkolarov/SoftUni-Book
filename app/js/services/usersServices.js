@@ -73,6 +73,15 @@ app.factory('users', ['$resource', 'baseServiceUrl', '$http','authentication',  
 
     }
 
+    //SEARCHING
+
+    function searchByNameUser(keys){
+        var serviceUrl = url + '/search?searchTerm=' + keys;
+        var resource = $resource(serviceUrl);
+
+        return resource.query();
+    }
+
     return {
         login: login,
         register: register,
@@ -80,7 +89,8 @@ app.factory('users', ['$resource', 'baseServiceUrl', '$http','authentication',  
         getProfilePage: getProfilePage,
         friendsData: friendsData,
         getFriendPage:getFriendPage,
-        getCurrentFriendFriends:getCurrentFriendFriends
+        getCurrentFriendFriends:getCurrentFriendFriends,
+        searchByNameUser:searchByNameUser
     }
 }]);
 

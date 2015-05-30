@@ -1,48 +1,47 @@
-app.controller('CurrentFriendCtrl', ['$scope', '$route','$routeParams','users','defaultCoverPicture','defaultProfilePicture','post','notifyService','profile',function ($scope, $route,$routeParams,users,defaultCoverPicture,defaultProfilePicture,post, notifyService, profile) {
+app.controller('CurrentFriendCtrl', ['$scope', '$route', '$routeParams', 'users', 'defaultCoverPicture', 'defaultProfilePicture', 'post', 'notifyService', 'profile', function ($scope, $route, $routeParams, users, defaultCoverPicture, defaultProfilePicture, post, notifyService, profile) {
 
-    $scope.friend = false;
 
 
     users.friendsData($routeParams.username)
-    .$promise
-    .then(function (data) {
+        .$promise
+        .then(function (data) {
 
 
             $scope.isFriend = data.isFriend;
             $scope.cfProfileImg = data.profileImageData;
             $scope.cfCoverImg = data.coverImageData;
             $scope.hasPendingRequest = data.hasPendingRequest;
-            if($scope.cfProfileImg === null){
-            $scope.cfProfileImg = defaultProfilePicture;
+            $scope.name = data.name;
+            $scope.usernamec = data.username;
+            $scope.friend = data.isFriend;
 
-        }else{
-            $scope.cfProfileImg = data.profileImageData;
-        }
-        if($scope.cfCoverImg === null){
-            $scope.cfCoverImg = defaultCoverPicture;
-        }else{
-            $scope.cfCoverImg = data.coverImageData;
-        }
+            if ($scope.cfProfileImg === null) {
+                $scope.cfProfileImg = defaultProfilePicture;
 
-        $scope.name = data.name;
-        $scope.usernamec = data.username;
+            } else {
+                $scope.cfProfileImg = data.profileImageData;
+            }
+            if ($scope.cfCoverImg === null) {
+                $scope.cfCoverImg = defaultCoverPicture;
+            } else {
+                $scope.cfCoverImg = data.coverImageData;
+            }
 
+            users.getFriendPage($scope.usernamec)
+                .$promise
+                .then(function (data) {
+                    $scope.userFeed = data;
+                }, function (error) {
+                    console.log(error)
+                })
 
-        users.getFriendPage($scope.usernamec)
-            .$promise
-            .then(function (data) {
-                $scope.userFeed = data;
-            }, function (error) {
-                console.log(error)
-            })
-
-    }, function (error) {
-        console.log(error)
-    })
+        }, function (error) {
+            console.log(error)
+        })
 
     $scope.showComment = false;
 
-    $scope.comment = function(id){
+    $scope.comment = function (id) {
         $scope.showComment = !$scope.showComment;
         $scope.checkCurrentCommentValue = id
     };
@@ -77,9 +76,9 @@ app.controller('CurrentFriendCtrl', ['$scope', '$route','$routeParams','users','
             })
     };
 
-    $scope.likeComFunc= function (id,comId) {
+    $scope.likeComFunc = function (id, comId) {
 
-        post.likeComment(id,comId)
+        post.likeComment(id, comId)
             .$promise
             .then(function (data) {
                 notifyService.showInfo('Liked');
@@ -90,9 +89,9 @@ app.controller('CurrentFriendCtrl', ['$scope', '$route','$routeParams','users','
             })
     };
 
-    $scope.unlikeComFunc = function (id,comId) {
+    $scope.unlikeComFunc = function (id, comId) {
 
-        post.unlikeComment(id,comId)
+        post.unlikeComment(id, comId)
             .$promise
             .then(function (data) {
                 notifyService.showInfo('Unliked');
@@ -106,12 +105,9 @@ app.controller('CurrentFriendCtrl', ['$scope', '$route','$routeParams','users','
     };
 
 
+    $scope.postComment = function (current, id) {
 
-
-
-    $scope.postComment = function (current,id) {
-
-        post.addComment({commentContent : current},id)
+        post.addComment({commentContent: current}, id)
             .$promise
             .then(function (data) {
                 notifyService.showInfo('Success comment')
@@ -123,40 +119,34 @@ app.controller('CurrentFriendCtrl', ['$scope', '$route','$routeParams','users','
     };
 
 
-
-    $scope.checkComments = function (count, id) {
-
-        if(count>3){
-
-            $scope.moreComments = true;
-            $scope.checkMoreCommentsValue = id;
-
-        }else{
-            $scope.moreComments = false;
-        }
-    };
-
     $scope.commentsList = false;
+    $scope.hideShowComments = 'Show more comments';
 
-    $scope.showMoreComments = function (count,id) {
-        $scope.commentsList = ! $scope.commentsList;
+    $scope.showMoreComments = function (id) {
 
-        if(count>3){
+        $scope.commentsList = !$scope.commentsList;
 
-            post.moreComments(id)
-                .$promise
-                .then(function (data) {
-                    var otherComments = [];
+        if($scope.hideShowComments == 'Show more comments'){
 
-                    for (var i = 3; i < data.length; i++) {
-                        otherComments.push(data[i]);
-                    }
-                    $scope.otherComments = otherComments;
+            $scope.hideShowComments = 'Hide more comments'
+        }else{
+            $scope.hideShowComments = 'Show more comments'
+        }
+        $scope.curId = id;
 
-                }, function (error) {
-                    console.log(error)
-                })
-        };
+        post.moreComments(id)
+            .$promise
+            .then(function (data) {
+                var otherComments = [];
+                for (var i = 3; i < data.length; i++) {
+                    otherComments.push(data[i]);
+                }
+                $scope.otherComments = otherComments;
+
+
+            }, function (error) {
+                console.log(error)
+            })
     };
 
     $scope.username = localStorage.username;
@@ -169,13 +159,14 @@ app.controller('CurrentFriendCtrl', ['$scope', '$route','$routeParams','users','
     };
 
 
-    $scope.editComment = function (postId,commentId,data) {
+    $scope.changeComment = function (postId, commentId, data) {
 
         var obj = {commentContent: data};
 
-        post.editComment(postId,commentId,obj)
+        post.editComment(postId, commentId, obj)
             .$promise
             .then(function (data) {
+
                 notifyService.showInfo('Edited');
                 $route.reload()
 
@@ -186,9 +177,14 @@ app.controller('CurrentFriendCtrl', ['$scope', '$route','$routeParams','users','
     }
 
 
-    $scope.deleteComment = function (postId,commentId) {
+    $scope.test = function () {
+        console.log($scope.comments)
+    }
 
-        post.deleteComment(postId,commentId)
+
+    $scope.deleteComment = function (postId, commentId) {
+
+        post.deleteComment(postId, commentId)
             .$promise
             .then(function (data) {
                 notifyService.showInfo('Deleted');
@@ -212,7 +208,7 @@ app.controller('CurrentFriendCtrl', ['$scope', '$route','$routeParams','users','
             })
     }
 
-    $scope.postMsg = function (data,username) {
+    $scope.postMsg = function (data, username) {
 
         obj = {
             postContent: data,
@@ -230,11 +226,9 @@ app.controller('CurrentFriendCtrl', ['$scope', '$route','$routeParams','users','
             })
     }
 
-
     $scope.invate = function (user) {
 
-
-        profile .sendFriendRequest(user)
+        profile.sendFriendRequest(user)
             .$promise
             .then(function (data) {
                 $route.reload();
@@ -245,7 +239,29 @@ app.controller('CurrentFriendCtrl', ['$scope', '$route','$routeParams','users','
             })
     }
 
+    $scope.editComment = false;
 
+    $scope.edit = function (id, data) {
+        $scope.editComment = !$scope.editComment;
+        $scope.checkCurrentEditValue = id;
+    };
+
+    $scope.editPost = function (id, data ) {
+
+        var obj = {
+            postContent: data
+        };
+
+        post.editPost(id,obj)
+            .$promise
+            .then(function (data) {
+                $route.reload();
+                notifyService.showInfo('Edited');
+            }, function (error) {
+                $route.reload();
+                notifyService.showError('Cannot edit post');
+            })
+    }
 
 
 

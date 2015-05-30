@@ -84,6 +84,17 @@ app.factory('post', ['$resource', 'baseServiceUrl', '$http','authentication',fun
         return resource.delete()
     }
 
+    function editPost(id,data){
+        var serviceUrl = url + id;
+
+        var resource = $resource(serviceUrl, null,
+            {
+                'update': { method:'PUT' }
+            });
+
+        return resource.update(data);
+    }
+
 
     return{
         likePost: likePost,
@@ -95,7 +106,8 @@ app.factory('post', ['$resource', 'baseServiceUrl', '$http','authentication',fun
         addPost:addPost,
         deletePost:deletePost,
         likeComment:likeComment,
-        unlikeComment:unlikeComment
+        unlikeComment:unlikeComment,
+        editPost:editPost
     }
 
 }]);
