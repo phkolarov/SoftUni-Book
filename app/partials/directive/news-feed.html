@@ -1,17 +1,17 @@
 <div class="newsFeedContainer">
 
     <div ng-repeat="news in feed"  ng-init="checkComments(news.totalCommentsCount,news.id)">
-        <div class="panel panel-success" >
+                  <div class="panel panel-success" >
 
-            <div class="panel-heading">
-                <h4>{{news.author.name}} on <a ng-href="#/users/{{news.wallOwner.username}}"> {{news.wallOwner.name}} </a> wall</h4>
+                <div class="panel-heading">
+                    <h4>{{news.author.name}} on <a ng-href="#/users/{{news.wallOwner.username}}"> {{news.wallOwner.name}} </a> wall</h4>
 
-                <p>{{news.date | date:'dd MMM yyyy HH:mm:ss'}}</p>
-                <img src="" class="feedProfilePic" ng-src="{{news.author.profileImageData}}"
-                     ng-if="news.author.profileImageData"/>
-                <img src="" class="feedProfilePic" ng-src="{{defaultProfileImageData}}"
-                     ng-if="!news.author.profileImageData"/>
-            </div>
+                    <p>{{news.date | date:'dd MMM yyyy HH:mm:ss'}}</p>
+                    <img src="" class="feedProfilePic" ng-src="{{news.author.profileImageData}}"
+                         ng-if="news.author.profileImageData"/>
+                    <img src="" class="feedProfilePic" ng-src="{{defaultProfileImageData}}"
+                         ng-if="!news.author.profileImageData"/>
+                </div>
 
 
             <div class="panel-body">

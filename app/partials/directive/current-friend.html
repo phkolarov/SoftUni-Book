@@ -1,4 +1,4 @@
-<div class="profileContainer">
+<div class="profileContainerCf">
 
 
         <img ng-src="{{cfCoverImg}}" class="myCover">
@@ -14,10 +14,10 @@
 
         <textarea  placeholder="What's on your mind?"  ng-model="myPost">
         </textarea>
-                <button class="btn btn-success"  ng-click="postMsg(myPost,usernamec)">POST</button>
+        <button class="btn btn-success"  ng-click="postMsg(myPost,usernamec)">POST</button>
         </div>
 
-        <div class="newsFeedContainer">
+        <div class="friendFeedCf">
 
                 <div ng-repeat="news in userFeed"  ng-init="checkComments(news.totalCommentsCount,news.id)">
                         <div class="panel panel-success" >
@@ -126,10 +126,10 @@
                         </div>
 
                         <button class="btn btn-info" ng-if="moreComments && checkMoreCommentsValue == news.id" ng-click="showMoreComments(news.totalCommentsCount, news.id )" >more comments</button>
-
                 </div>
 
 
         </div>
+        <div id="profilePageFB" friends-box-C-F></div>
 
 </div>

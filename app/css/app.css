@@ -32,11 +32,12 @@
 .fb-container{
 
 	margin: 0px;
-
+	display: inline-block;
 	text-align: center;
 	width: 450px;
 	height: 350px;
 	border: 1px solid black;
+	z-index: 20;
 }
 
 .profileImg{
@@ -127,7 +128,9 @@ span{
 	float: left;
 }
 .newsFeedContainer{
+	width: 700px;
 	border: 1px solid lightgrey;
+	margin: 10px;
 	border-radius: 5px;
 	padding: 10px;
 
@@ -168,7 +171,7 @@ button{
 
 #postContainer textarea {
 	margin-top: 2%;
-	margin-bottom: -30px;
+	margin-bottom: 10px;
 	width: 600px;
 	height: 120px;
 	border: 1px solid lightseagreen;
@@ -191,4 +194,18 @@ a{
 }
 .boxFriend a {
 	color: dodgerblue;
+
+}
+.friendFeed{
+	width: 700px;
+	border: 1px solid black;
+	display: inline-block;
+}
+.profileContainerCf{
+	border: 1px solid black;
+	height: auto;
+
+}
+.friendFeedCf{
+	
 }

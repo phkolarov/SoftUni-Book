@@ -64,13 +64,23 @@ app.factory('users', ['$resource', 'baseServiceUrl', '$http','authentication',  
         return resource.query()
     }
 
+    function getCurrentFriendFriends (user){
+        var user = user
+        var serviceUrl = url + user + '/friends/preview';
+        var resource = $resource(serviceUrl);
+
+        return  resource.get();
+
+    }
+
     return {
         login: login,
         register: register,
         logout: logout,
         getProfilePage: getProfilePage,
         friendsData: friendsData,
-        getFriendPage:getFriendPage
+        getFriendPage:getFriendPage,
+        getCurrentFriendFriends:getCurrentFriendFriends
     }
 }]);
 

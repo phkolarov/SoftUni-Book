@@ -1,6 +1,12 @@
-app.controller('HomePageCtrl', ['$scope', '$route', function ($scope, $route) {
+app.controller('HomePageCtrl', ['$scope','$location', '$route','$routeParams', function ($scope,$location, $route,$routeParams) {
 
 
+
+    if($routeParams.username == localStorage.username){
+
+        $location.path('/profile')
+
+    }
 
     $scope.invates = function () {
 

@@ -12,13 +12,11 @@ app.controller('CurrentFriendCtrl', ['$scope', '$route','$routeParams','users','
             $scope.cfProfileImg = data.profileImageData;
             $scope.cfCoverImg = data.coverImageData;
             $scope.hasPendingRequest = data.hasPendingRequest;
-            console.log(data)
             if($scope.cfProfileImg === null){
             $scope.cfProfileImg = defaultProfilePicture;
 
         }else{
             $scope.cfProfileImg = data.profileImageData;
-            console.log($scope.cfCoverImg)
         }
         if($scope.cfCoverImg === null){
             $scope.cfCoverImg = defaultCoverPicture;

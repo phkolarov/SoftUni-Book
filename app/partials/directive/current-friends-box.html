@@ -1,4 +1,4 @@
-<div class="fb-container">
+<div class="fb-container" ng-if="box">
 
     <h3>Friends - {{countOfFriends}} total</h3>
 
@@ -14,7 +14,5 @@
                 <img src="" class="boxPic" ng-src="{{defaultProfileImageData}}" ng-if="!friend.profileImageData"/>
             </a>
         </div>
-
     </ul>
-
 </div>

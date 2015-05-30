@@ -25,7 +25,7 @@ app.config(['$routeProvider', function ($routeProvider,localStorageServiceProvid
         templateUrl: 'partials/profile.html',
         controller: 'HomePageCtrl',
         resolve:{
-            isLogged: function($location, $localStorage){
+            isLogged: function($location){
                 if(!localStorage.userSession){
                     console.log($localStorage.userSession);
                     $location.path('/');
@@ -38,7 +38,7 @@ app.config(['$routeProvider', function ($routeProvider,localStorageServiceProvid
         templateUrl: 'partials/current-friend-page.html',
         controller: 'HomePageCtrl',
         resolve:{
-            isLogged: function($location, $localStorage){
+            isLogged: function($location){
                 if(!localStorage.userSession){
                     $location.path('/');
                 }
@@ -50,7 +50,7 @@ app.config(['$routeProvider', function ($routeProvider,localStorageServiceProvid
         templateUrl: 'partials/edit.html',
         controller: 'HomePageCtrl',
         resolve:{
-            isLogged: function($location, $localStorage){
+            isLogged: function($location){
                 if(!localStorage.userSession){
                     $location.path('/');
                 }
@@ -62,7 +62,7 @@ app.config(['$routeProvider', function ($routeProvider,localStorageServiceProvid
         templateUrl: 'partials/change-password.html',
         controller: 'HomePageCtrl',
         resolve:{
-            isLogged: function($location, $localStorage){
+            isLogged: function($location){
                 if(!localStorage.userSession){
                     $location.path('/');
                 }
