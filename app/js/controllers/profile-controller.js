@@ -30,7 +30,6 @@ app.controller('ProfilePageCtrl', ['$scope', 'profile','notifyService','users','
             .then(function (data) {
 
                 $scope.myWall = data;
-                console.log(data)
             }, function (error) {
                 console.log(error)
             })
@@ -168,10 +167,10 @@ app.controller('ProfilePageCtrl', ['$scope', 'profile','notifyService','users','
                 $route.reload()
 
             }, function (error) {
-                console.log(error)
+                console.log(error);
                 notifyService.showError('Error on edit comment')
             })
-    }
+    };
 
 
     $scope.deleteComment = function (postId,commentId) {
@@ -185,7 +184,7 @@ app.controller('ProfilePageCtrl', ['$scope', 'profile','notifyService','users','
             }, function (error) {
                 notifyService.showError('Error on delete comment')
             })
-    }
+    };
 
     $scope.postMsg = function (data) {
 
@@ -198,13 +197,13 @@ app.controller('ProfilePageCtrl', ['$scope', 'profile','notifyService','users','
         post. addPost(obj)
             .$promise
             .then(function (data) {
-                notifyService.showInfo('Posted')
+                notifyService.showInfo('Posted');
                 $route.reload()
             }, function (error) {
                 notifyService.showError('Error on post message');
                 console.log(error)
             })
-    }
+    };
 
     $scope.deletePost = function (id) {
         post.deletePost(id)
@@ -212,13 +211,12 @@ app.controller('ProfilePageCtrl', ['$scope', 'profile','notifyService','users','
             .then(function (data) {
                 notifyService.showInfo('Successfully deleted post');
                 $route.reload();
-                console.log(data)
             }, function (error) {
                 notifyService.showError('Error on delete post');
                 $route.reload();
                 console.log(error)
             })
-    }
+    };
 
     $scope.editComment = false;
 

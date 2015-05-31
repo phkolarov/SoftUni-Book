@@ -3,7 +3,7 @@ app.controller('CurrentFriendFBoxCtrl', [ '$scope','users','authentication', 'de
 
 
 
-  $scope.username = $routeParams.username;
+  $scope.usernamefb = $routeParams.username;
 
 
     users.friendsData($routeParams.username)
@@ -13,18 +13,22 @@ app.controller('CurrentFriendFBoxCtrl', [ '$scope','users','authentication', 'de
             if(data.isFriend == true){
 
                 $scope.box = true;
-                users.getCurrentFriendFriends($scope.username)
+                users.getCurrentFriendFriends( $scope.usernamefb)
                     .$promise
                     .then(function (data) {
 
-                        $scope.friends = data.friends;
 
+                        if(data.friends.length > 6){
+                            data.friends = data.friends.slice(0.6);
+                        }
+
+                        $scope.countOfFriends = data.totalCount;
+                        $scope.friends = data.friends;
                         $scope.box = $scope.isFriend;
 
+                        console.log(data)
                     }, function (error) {
-
                         $scope.box = false;
-
                     })
             }else{
                 $scope.box = false;
@@ -33,10 +37,6 @@ app.controller('CurrentFriendFBoxCtrl', [ '$scope','users','authentication', 'de
         }, function (error) {
             console.log(error)
         });
-
-
-
-
 
     $scope.defaultProfileImageData = defaultProfilePicture;
 }]);

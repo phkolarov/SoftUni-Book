@@ -1,0 +1,26 @@
+<div id="friends-list-wrapper">
+
+
+    <div id="container">
+        <ul>
+            <li ng-repeat=" friend in friends">
+            <a ng-href="#/users/{{friend.username}}">
+                <div class="friend">
+
+                    <img src="" class="boxPic" ng-src="{{friend.profileImageData}}" ng-if="friend.profileImageData"/>
+                    <img src="" class="boxPic" ng-src="{{defaultProfileImageData}}" ng-if="!friend.profileImageData"/>
+                    <div><p>{{friend.name}}</p></div>
+                    <br class="clearBoth" />
+                </div>
+
+            </a>
+
+        </li>
+
+
+        </ul>
+
+    </div>
+
+
+</div>

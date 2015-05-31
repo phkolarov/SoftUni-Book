@@ -41,28 +41,23 @@ app.controller('MainMenuCtrl', ['$scope','users','authentication','notifyService
             console.log(error);
         })
 
-    $scope.test = [
-        {kaka: "aka"},
-        {kaka: "aka"},
-        {kaka: "aka"},
-        {kaka: "aka"},
-        {kaka: "aka"}
-    ];
+    var defaultPicture =  defaultProfilePicture;
 
-    $scope.defaultProfilePicture = defaultProfilePicture;
+    $scope.defaultPicture = defaultPicture
 
     $scope.intest = function (input) {
 
-    console.log(input)
-        users.searchByNameUser(input)
-            .$promise
-            .then(function (data) {
-                $scope.searchingUsers= data;
-                console.log(data)
-            }, function (error) {
-                console.log(error)
-            })
-    }
+       if(input){
+           users.searchByNameUser(input)
+               .$promise
+               .then(function (data) {
+                   $scope.searchingUsers= data;
+
+               }, function (error) {
+                   console.log(error)
+               })
+       }
+    };
 
     $scope.searchFunc = function () {
 

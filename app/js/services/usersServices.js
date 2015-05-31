@@ -73,6 +73,14 @@ app.factory('users', ['$resource', 'baseServiceUrl', '$http','authentication',  
 
     }
 
+    function getFullFriendList (user){
+        var user = user
+        var serviceUrl = url + user + '/friends/';
+        var resource = $resource(serviceUrl);
+
+        return  resource.query();
+
+    }
     //SEARCHING
 
     function searchByNameUser(keys){
@@ -90,7 +98,8 @@ app.factory('users', ['$resource', 'baseServiceUrl', '$http','authentication',  
         friendsData: friendsData,
         getFriendPage:getFriendPage,
         getCurrentFriendFriends:getCurrentFriendFriends,
-        searchByNameUser:searchByNameUser
+        searchByNameUser:searchByNameUser,
+        getFullFriendList:getFullFriendList
     }
 }]);
 

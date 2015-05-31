@@ -1,17 +1,15 @@
 <ul >
     <li ng-repeat="user in searchingUsers">
 
-
             <a ng-href="#/users/{{user.username}}">
                 <img src="" class="boxPic" ng-src="{{user.profileImageData}}" ng-if="user.profileImageData"/>
             </a>
             <a ng-href="#/users/{{user.username}}">
-                <img src="" class="boxPic" ng-src="{{defaultProfileImageData}}" ng-if="!user.profileImageData"/>
+                <img src="" class="boxPic" ng-src="{{defaultPicture}}" ng-if="!user.profileImageData"/>
             </a>
             <a ng-href="#/users/{{user.username}}">
                 <p>{{user.name}}</p>
             </a>
-
     </li>
 </ul>
 

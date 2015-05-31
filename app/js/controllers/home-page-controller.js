@@ -1,5 +1,7 @@
-app.controller('HomePageCtrl', ['$scope','$location', '$route','$routeParams', function ($scope,$location, $route,$routeParams) {
+app.controller('HomePageCtrl', ['$scope','$location', '$route','$routeParams', 'defaultProfilePicture',function ($scope,$location, $route,$routeParams,defaultProfilePicture) {
 
+
+    $scope.defaultProfilePicture = defaultProfilePicture;
 
     if($routeParams.username == localStorage.username){
 
