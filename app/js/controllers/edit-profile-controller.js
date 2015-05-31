@@ -12,6 +12,7 @@ app.controller('EditProfileCtrl', ['$scope','profile','$route','notifyService','
             localStorage.profilePicture = data.profileImageData;
             localStorage.coverPicture = data.coverImageData;
 
+            $scope.gender = data.gender
             if(data.gender == 1){
 
                 $scope.genderPic = 'img/male.png';
@@ -106,9 +107,11 @@ app.controller('EditProfileCtrl', ['$scope','profile','$route','notifyService','
                var obj = {};
                var name = $scope.editProfile.name;
                var email = $scope.editProfile.email;
-               var gender = $scope.editProfile.gender;
+               var gender = $scope.gender;
                var profilePic = $scope.editProfile.profileImageData;
                var coverPic = $scope.editProfile.coverImageData;
+
+
 
 
                if(name){
