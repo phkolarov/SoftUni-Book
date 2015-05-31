@@ -1,23 +1,12 @@
-app.controller('MainMenuCtrl', ['$scope','users','authentication','notifyService','$route','profile','defaultProfilePicture', function ($scope,users, authentication,notifyService, $route,profile,defaultProfilePicture) {
+app.controller('MainMenuCtrl', ['$scope','users','$location','authentication','notifyService','$route','profile','defaultProfilePicture', function ($scope,users,$location, authentication,notifyService, $route,profile,defaultProfilePicture) {
 
-    $scope.logout = function(){
+    $scope.logoutf = function(){
 
-        users.logout()
-            .$promise
-            .then(function (data) {
-                authentication.logout();
-                authentication.clearHeaders();
-                notifyService.showInfo('Logout success')
-                $route.reload();
-            },function(data){
+        $location.path('/logout')
 
-                authentication.logout();
-                authentication.clearHeaders();
-                notifyService.showInfo('Logout success')
-                $route.reload();
-            });
     };
 
+if(localStorage.userSession){
     $scope.show = true;
 
     $scope.invates = function () {
@@ -30,16 +19,16 @@ app.controller('MainMenuCtrl', ['$scope','users','authentication','notifyService
 
             $scope.count = function () {
 
-            if(data.length > 0){
+                if(data.length > 0){
 
-                $scope.color = {"color":"#f39c12", "font-weight": "bold" }
-                return ' - '+ data.length;
+                    $scope.color = {"color":"#f39c12", "font-weight": "bold" };
+                    return ' - '+ data.length;
+                }
             }
-        }
 
         }, function (error) {
             console.log(error);
-        })
+        });
 
     var defaultPicture =  defaultProfilePicture;
 
@@ -47,16 +36,16 @@ app.controller('MainMenuCtrl', ['$scope','users','authentication','notifyService
 
     $scope.intest = function (input) {
 
-       if(input){
-           users.searchByNameUser(input)
-               .$promise
-               .then(function (data) {
-                   $scope.searchingUsers= data;
+        if(input){
+            users.searchByNameUser(input)
+                .$promise
+                .then(function (data) {
+                    $scope.searchingUsers= data;
 
-               }, function (error) {
-                   console.log(error)
-               })
-       }
+                }, function (error) {
+                    console.log(error)
+                })
+        }
     };
 
     $scope.searchFunc = function () {
@@ -70,6 +59,7 @@ app.controller('MainMenuCtrl', ['$scope','users','authentication','notifyService
         }
     }
 
+}
 
 
 

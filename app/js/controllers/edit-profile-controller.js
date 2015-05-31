@@ -3,8 +3,6 @@ app.controller('EditProfileCtrl', ['$scope','profile','$route','notifyService','
 
 
 
-    $scope.message = 'I\' alive';
-
     profile.getProfileInfo()
         .$promise
         .then(function (data) {

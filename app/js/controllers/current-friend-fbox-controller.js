@@ -17,7 +17,6 @@ app.controller('CurrentFriendFBoxCtrl', [ '$scope','users','authentication', 'de
                     .$promise
                     .then(function (data) {
 
-
                         if(data.friends.length > 6){
                             data.friends = data.friends.slice(0.6);
                         }

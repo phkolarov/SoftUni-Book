@@ -1,20 +1,41 @@
-app.controller('logout', ['$scope','$location', 'users', 'notifyService','authentication',function($scope,$location, users, notifyService,authentication) {
+app.controller('logout', ['$scope','$location','$route', 'users', 'notifyService','authentication','$timeout',function($scope,$location, $route,users, notifyService,authentication,$timeout) {
 
 
 
-    $scope.logout = function(){
+
+
+    $timeout(function logoutFunc( ){
 
         users.logout()
             .$promise
-            .then(function(data){
+            .then(function (data) {
+                //authentication.logout();
+                //authentication.clearHeaders();
+                //notifyService.showInfo('Logout success');
+                //$route.reload();
                 localStorage.clear();
-                $location.path('/');
+                authentication.clearHeaders();
                 notifyService.showInfo('Logout Success');
-            }, function(error){
+                $location.path('/');
+            },function(data){
 
-                notifyService.showError('Error on logout');
+                authentication.logout();
+                authentication.clearHeaders();
+                notifyService.showInfo('Logout Error');
+                $route.reload();
             });
-    }
+
+    }, 5000);
+    //$scope.logout = function(){
+    //    users.logout()
+    //        .$promise
+    //        .then(function(data){
+    //
+    //        }, function(error){
+    //
+    //            notifyService.showError('Error on logout');
+    //        });
+    //}
 
 
 }]);
