@@ -75,6 +75,11 @@ app.config(['$stateProvider','$routeProvider', function ($stateProvider,$routePr
         }
     });
 
+    $routeProvider.when('/logout',{
+        templateUrl: 'partials/pages/logout-page.html',
+        controller: 'HomePageCtrl'
+    });
+
     $routeProvider.otherwise({
         redirectTo: '/'
     });

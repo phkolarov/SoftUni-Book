@@ -79,19 +79,19 @@
 
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" ng-model="oldPassword" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <input type="text" ng-model="oldPassword" class="form-control" id="exampleInputPassword1" placeholder="Password">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <input type="password" ng-model="newPass" class="form-control" id="exampleInputPassword1" placeholder="Password">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <label for="exampleInputPassword1">Confirm Password</label>
+                    <input type="password" ng-model="rnewPass" class="form-control" id="exampleInputPassword1" placeholder="Password">
                 </div>
                 <div class="col-md-2 col-md-offset-5">
 
-                <button type="submit" class="btn btn-info">Change password</button>
+                <button type="submit" ng-click="saveNewPass()" class="btn btn-info">Change password</button>
 
                 </div>
             </form>

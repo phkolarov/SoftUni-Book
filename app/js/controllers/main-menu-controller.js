@@ -1,10 +1,5 @@
 app.controller('MainMenuCtrl', ['$scope','users','$location','authentication','notifyService','$route','profile','defaultProfilePicture', function ($scope,users,$location, authentication,notifyService, $route,profile,defaultProfilePicture) {
 
-    $scope.logoutf = function(){
-
-        $location.path('/logout')
-
-    };
 
 if(localStorage.userSession){
     $scope.show = true;

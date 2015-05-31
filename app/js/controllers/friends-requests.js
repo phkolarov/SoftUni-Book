@@ -1,15 +1,16 @@
 app.controller('FriendsRequests', ['$scope','profile','$route', 'notifyService', function ($scope,profile,$route,notifyService) {
 
 
-    profile.getRequests()
-        .$promise
-        .then(function (data) {
-            $scope.requests = data;
-        }, function (error) {
-            console.log('FF')
-            console.log(error)
-        })
-
+    if(localStorage.userSession){
+        profile.getRequests()
+            .$promise
+            .then(function (data) {
+                $scope.requests = data;
+            }, function (error) {
+                console.log('FF')
+                console.log(error)
+            })
+    }
 
    $scope.accept = function(id){
 

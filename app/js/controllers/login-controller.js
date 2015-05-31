@@ -6,6 +6,8 @@ app.controller('LoginForm', ['$scope', 'authentication', '$location', 'users', '
 
         var userObj = user;
 
+        localStorage.userPassword = userObj.password;
+
         users.login(userObj)
             .$promise
             .then(function (data) {

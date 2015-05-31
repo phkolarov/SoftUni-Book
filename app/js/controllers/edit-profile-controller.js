@@ -2,6 +2,7 @@ app.controller('EditProfileCtrl', ['$scope','profile','$route','notifyService','
 
 
 
+    $scope.oldPassword = localStorage.userPassword;
 
     profile.getProfileInfo()
         .$promise
@@ -64,6 +65,36 @@ app.controller('EditProfileCtrl', ['$scope','profile','$route','notifyService','
 
     };
 
+    $scope.saveNewPass = function () {
+
+        if($scope.newPass&& $scope.rnewPass && $scope.newPass == $scope.rnewPass && $scope.newPass.length >= 6 && $scope.rnewPass.length >= 6){
+
+            var obj = {
+                oldPassword : $scope.oldPassword,
+                newPassword:$scope.newPass,
+                confirmPassword:$scope.rnewPass
+            };
+
+            profile.changePassword(obj)
+                .$promise
+                .then(function (data) {
+
+                    localStorage.userPassword = $scope.newPass;
+                    notifyService.showInfo(data.message);
+                    $route.reload();
+                }, function (error) {
+                    console.log(error)
+                })
+
+
+        }else if ($scope.newPass.length < 6 || $scope.rnewPass.length < 6){
+            notifyService.showError('Password must be at least 6 characters in length');
+
+        }
+        else{
+            notifyService.showError('Password Not Match');
+        }
+    };
 
 
     $scope.saveProfileData = function () {

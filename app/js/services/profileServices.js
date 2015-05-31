@@ -58,10 +58,19 @@ app.factory('profile', ['$resource', 'baseServiceUrl', '$http','authentication',
     }
 
     function sendFriendRequest(username){
-        console.log()
         var resource = $resource(url+'/requests/'+ username);
 
         return resource.save()
+    }
+
+    function changePassword(obj){
+        var serviceUrl = url+'/changepassword';
+        var resource = $resource(serviceUrl, null,
+            {
+                'update': { method:'PUT' }
+            });
+
+        return resource.update(obj);
     }
 
     return{
@@ -71,7 +80,8 @@ app.factory('profile', ['$resource', 'baseServiceUrl', '$http','authentication',
         acceptRequest: acceptRequest,
         getFriends: getFriends,
         getNewsFeed: getNewsFeed,
-        sendFriendRequest:sendFriendRequest
+        sendFriendRequest:sendFriendRequest,
+        changePassword:changePassword
     }
 
 

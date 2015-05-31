@@ -31,8 +31,6 @@ app.controller('NewsFeedCtrl', ['$scope', 'profile','post','notifyService','$rou
             }, function (error) {
                 notifyService.showError('Error on like');
             })
-
-
     };
 
     $scope.unlikeFunc = function (id) {
