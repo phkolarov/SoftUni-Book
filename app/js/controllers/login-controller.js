@@ -8,6 +8,7 @@ app.controller('LoginForm', ['$scope', 'authentication', '$location', 'users', '
 
         localStorage.userPassword = userObj.password;
 
+
         users.login(userObj)
             .$promise
             .then(function (data) {
@@ -16,6 +17,7 @@ app.controller('LoginForm', ['$scope', 'authentication', '$location', 'users', '
                 authentication.setHeaders();
                 $route.reload();
                 notifyService.showInfo('Login Success');
+
             }, function (error) {
 
                 console.log(error);

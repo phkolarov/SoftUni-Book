@@ -24,6 +24,6 @@ app.controller('logout', ['$scope','$location','$route', 'users', 'notifyService
                 $route.reload();
             });
 
-    }, 3000);
+    }, 2000);
 
 }]);

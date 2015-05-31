@@ -36,6 +36,7 @@ app.controller('EditProfileCtrl', ['$scope','profile','$route','notifyService','
 
         if(localStorage.profilePicture == 'undefined'|| localStorage.profilePicture == 'null' ){
 
+            localStorage.profilePicture = defaultProfilePicture;
             return defaultProfilePicture
 
         }else{
@@ -48,6 +49,7 @@ app.controller('EditProfileCtrl', ['$scope','profile','$route','notifyService','
 
         if(localStorage.coverPicture == 'undefined'|| localStorage.coverPicture == 'null' ){
 
+            localStorage.coverPicture = defaultCoverPicture;
             return defaultCoverPicture;
         }else{
             return localStorage.coverPicture;
@@ -56,12 +58,13 @@ app.controller('EditProfileCtrl', ['$scope','profile','$route','notifyService','
     }
 
     $scope.changeProfileImageData = function(){
-        $scope.editProfile.profileImageData = "data:image/jpg;base64," + $scope.editProfile.profileImageData.base64;
+        $scope.profileImage = "data:image/jpg;base64," + $scope.editProfile.profileImageData.base64;
+
 
     };
 
     $scope.changeCoverImageData = function () {
-        $scope.editProfile.coverImageData = "data:image/jpg;base64," + $scope.editProfile.coverImageData.base64;
+        $scope.coverImage = "data:image/jpg;base64," + $scope.editProfile.coverImageData.base64;
 
 
     };
@@ -108,8 +111,9 @@ app.controller('EditProfileCtrl', ['$scope','profile','$route','notifyService','
                var name = $scope.editProfile.name;
                var email = $scope.editProfile.email;
                var gender = $scope.gender;
-               var profilePic = $scope.editProfile.profileImageData;
-               var coverPic = $scope.editProfile.coverImageData;
+               var profilePic = $scope.profileImage;
+               var coverPic = $scope.coverImage;
+
 
 
 
@@ -123,14 +127,19 @@ app.controller('EditProfileCtrl', ['$scope','profile','$route','notifyService','
                if(gender){
                    obj.gender = gender;
                }
-               if(profilePic){
-                   obj.profileImageData = profilePic
+               if(!profilePic){
+                   obj.profileImageData = localStorage.profilePicture
+               }else{
+                   obj.profileImageData = profilePic;
                }
-               if(coverPic){
+               if(!coverPic){
+                   obj.coverImageData = localStorage.coverPicture;
+               }else{
                    obj.coverImageData = coverPic;
                }
 
-               if(name && email && gender && profilePic && coverPic){
+               console.log(obj);
+               if(name && email && gender ){
 
                    console.log(obj);
                    profile.setProfileInfo(obj)
