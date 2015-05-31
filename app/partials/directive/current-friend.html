@@ -10,6 +10,7 @@
         <button class="btn btn-danger" class="isFriend" ng-show="!isFriend && hasPendingRequest" >INVATED</button>
         <button class="btn btn-danger" class="invate" ng-click="invate(usernamec)" ng-show="!isFriend && !hasPendingRequest">INVATE</button>
         <div></div>
+
         <div id="postContainer" ng-show="isFriend">
 
         <textarea  placeholder="What's on your mind?"  ng-model="myPost">
@@ -34,6 +35,7 @@
 
 
                                 <div class="panel-body">
+
                                         <h4>{{news.postContent}}</h4>
                                         <span >Likes - {{news.likesCount}}</span>
                                         <span >Comments - {{news.totalCommentsCount}}</span>
@@ -80,9 +82,11 @@
                                                 <h4>{{comments.commentContent}}</h4>
                                                 <p>Likes : {{comments.likesCount}}</p>
                                                 <div ng-show="friend">
-                                                <button class="btn btn-info" ng-show="!comments.liked" ng-click="likeComFunc(news.id,comments.id)" ng-init="likes(comments.liked)">Like </button>
+
+
+                                                        <button class="btn btn-info" ng-show="!comments.liked" ng-click="likeComFunc(news.id,comments.id)" ng-init="likes(comments.liked)">Like </button>
                                                 <button class="btn btn-info" ng-show="comments.liked" ng-click="unlikeComFunc(news.id,comments.id)" ng-init="likes(comments.liked)">Unlike </button>
-                                                <div ng-if="comments.author.username == username">
+                                                        <div ng-if="comments.author.username == username">
                                                         <button class="btn btn-danger" ng-click="deleteComment(news.id,comments.id)">Delete</button>
                                                         <button class="btn btn-info" ng-click="showEditField(comments.id)">Edit</button>
                                                 </div>

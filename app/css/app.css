@@ -196,12 +196,16 @@ a{
 	color: dodgerblue;
 
 }
+
+.fb-container a {
+	color: dodgerblue;
+}
 .friendFeed{
 	width: 700px;
 	display: inline-block;
 }
 .profileContainerCf{
-	border: 1px solid black;
+
 	height: auto;
 
 }
@@ -215,7 +219,7 @@ a{
 	width: 560px;
 	border: 1px solid black;
 	position: absolute;
-	background-color: rgba(0,0,0,0.6	);
+	background-color: rgba(0,0,0,0.6);
 	border-radius: 5px;
 	margin-left: 10px;
 	z-index: 13;

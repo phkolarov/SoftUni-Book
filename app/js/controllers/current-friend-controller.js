@@ -1,4 +1,4 @@
-app.controller('CurrentFriendCtrl', ['$scope', '$route', '$routeParams', 'users', 'defaultCoverPicture', 'defaultProfilePicture', 'post', 'notifyService', 'profile', function ($scope, $route, $routeParams, users, defaultCoverPicture, defaultProfilePicture, post, notifyService, profile) {
+app.controller('CurrentFriendCtrl', ['$scope','$state', '$route', '$routeParams', 'users', 'defaultCoverPicture', 'defaultProfilePicture', 'post', 'notifyService', 'profile','$stateParams', function ($scope,$state, $route, $routeParams, users, defaultCoverPicture, defaultProfilePicture, post, notifyService, profile,$stateParams) {
 
 
 
@@ -53,14 +53,16 @@ app.controller('CurrentFriendCtrl', ['$scope', '$route', '$routeParams', 'users'
             .$promise
             .then(function (data) {
                 notifyService.showInfo('Liked');
-                $route.reload();
+
+               $route.reload();
 
             }, function (error) {
                 notifyService.showError('Error on like');
             })
 
-
     };
+
+
 
     $scope.unlikeFunc = function (id) {
 

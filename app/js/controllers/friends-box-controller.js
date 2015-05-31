@@ -9,6 +9,7 @@ app.controller('FriendsBoxCtrl', [ '$scope','profile','authentication', 'default
                 data.slice(0,6)
             }
             $scope.friends = data;
+
         }, function(error){
             console.log(error)
         });

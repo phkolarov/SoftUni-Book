@@ -3,7 +3,7 @@ app.controller('CurrentFriendFBoxCtrl', [ '$scope','users','authentication', 'de
 
 
 
-   var username = $routeParams.username;
+  $scope.username = $routeParams.username;
 
 
     users.friendsData($routeParams.username)
@@ -13,7 +13,7 @@ app.controller('CurrentFriendFBoxCtrl', [ '$scope','users','authentication', 'de
             if(data.isFriend == true){
 
                 $scope.box = true;
-                users.getCurrentFriendFriends(username)
+                users.getCurrentFriendFriends($scope.username)
                     .$promise
                     .then(function (data) {
 
