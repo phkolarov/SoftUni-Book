@@ -138,7 +138,6 @@ app.controller('EditProfileCtrl', ['$scope','profile','$route','notifyService','
                    obj.coverImageData = coverPic;
                }
 
-               console.log(obj);
                if(name && email && gender ){
 
                    console.log(obj);
